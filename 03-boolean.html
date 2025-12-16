@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boolean</title>
+</head>
+<body>
+  <script>
+    //check true /false
+    console.log(3<5);
+    console.log(3>5);
+    
+    //check typeof 
+
+    console.log(typeof true);
+    console.log(typeof false);
+
+    //Greater than
+    console.log(5>2);
+    //lesser than
+    console.log(1<5);
+    //greater than or equal to
+    console.log(3>=3);
+
+    //lesser than or equal to
+    console.log(3<=3);
+
+    //equal to In java Script can be used of only === equal to explain it below 
+
+    //in JS == does type conversion before comparison.
+    // Steps JS follows:
+
+    //'5.0' (string) → converted to number 5
+    // 5 == 5 → true
+    // So 5 == '5.0' is TRUE, not false.
+
+    console.log(5=='5.0');//js it' like true but it' false so we used ===
+    //it can be automatica type conversion
+
+    console.log(5==='5.0');
+    console.log(5===5.0);
+    console.log(5===5);
+
+    //!== is used rather than != yy means it also samely for type conversion
+
+    console.log(5!='5.0');//it's false becaue 5and 5.0 is equal
+
+    console.log(5!=='5.0');//string and number are not same
+
+
+    //order of the operation
+    console.log(3 > 5-5); //it, true because first operator 
+                           //ony perform 5-5=0 then compare 3>0
+    console.log(1>5-2);
+
+    
+  </script>
+</body>
+</html>

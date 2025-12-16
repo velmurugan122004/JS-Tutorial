@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const name='vels';
+    const age =5;
+
+    const now=new Date();
+    const day=now.getDay();
+
+    const isHoliday=(day===0?true:false)
+
+    if((!isHoliday)&&(age<6 || age>60))
+    {
+      console.log('Discount');
+    }
+    else{
+      console.log('No Discount');
+    }
+  </script>
+</body>
+</html>
