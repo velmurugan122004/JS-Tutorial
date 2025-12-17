@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const details={
+      name:'vels',
+      age:21,
+      gender:'male'
+    };
+    console.log(details);
+    console.log(details.name);
+    console.log(details.age);
+    console.log(details.gender);
+
+
+    //update object deatils like
+    details.name='Vel Murugan';
+    console.log(details);
+
+    //add one more object details to be craeated 
+
+    details.newUpdate='6379144280';
+    console.log(details.newUpdate);
+    console.log(details);
+
+    //delete object data in object
+
+    delete details.newUpdate;
+    console.log(details);
+
+    //other way to use objects
+    console.log(details['name']);
+
+  </script>
+</body>
+</html>
