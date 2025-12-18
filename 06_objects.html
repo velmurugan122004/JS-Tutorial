@@ -81,7 +81,71 @@
     //in js all are inside of objects
     delivery_detail.fun(); //this is nested function inside of objects see code line in 59
 
-    
+
+    //one object is copy to other object after change of data means change of all object
+
+    const obj1={
+      message :"hello"
+    };
+
+    console.log(obj1.message);
+
+    //now copy value
+    const obj2=obj1;
+    console.log(obj2.message);
+
+    //upadate value 
+    obj1.message="how r u?";
+
+    console.log(obj1.message); //diplay updated obj1
+    console.log(obj2.message);// thi also upadte it
+
+
+    //now check two object are same 
+
+    console.log(obj1===obj2); ///true because both are ame reference value
+
+    const obj3={
+      message:"how r u?"
+    };
+
+    //now check object3 and object1 // 2
+
+    console.log(obj1===obj3);//this means false because two various reference of value eventhough both are same value 
+
+    //other way to update value
+
+    const obj4={
+      message:"how r u?",
+      price:1000
+    };
+
+    //const  message=obj4.message;//usual one
+    //console.log(message);
+
+    const {message1}=obj4;
+    console.log(message1); // this are undefined because obj4 inside key message but now created in message1
+
+    //now solve it undefined
+    const{message,price}=obj4;
+    console.log(message);//this can be printed message
+    console.log(price);//detructing
+
+    obj5={
+      //message:message
+      message, //both are same 
+
+      /*method:function()
+      {
+        console.log("METHOD INSIDE");
+      }*/
+     method()//shortand method
+     {
+      console.log("METHOD INSIDE UPDATED VERSION");
+     }
+    };
+    console.log(obj5);
+    obj5.method();
   </script>
 </body>
 </html>
