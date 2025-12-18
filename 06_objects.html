@@ -34,8 +34,54 @@
     console.log(details);
 
     //other way to use objects
-    console.log(details['name']);
+    console.log(details['name']); //Dot Notation
 
+    //In jaavaScript doen't use of the .notation in this type of added new onject value
+    //because that can be consider math related ('-')can be used that's yyy
+
+    //console.log(details.refer-time); //Uncaught ReferenceError: time is not defined
+
+    //this error can be avoided by using of []notation 
+
+    console.log(details['refer-time']);
+
+    //square notation to update value 
+    details['delivery-time']='1 day';
+    console.log(details);
+    
+
+    //nested objects
+    const delivery_detail={
+      product:'shirt',
+      rating :{    //nested objects
+        stars:4.4,
+        count:87      },
+        //this like method(function i inside of objects)
+        fun : function func1() //object inide nested function create
+        {
+          console.log("hello buddy i'm inide of the object ");
+        }
+    };
+
+    //display nestde objects
+    console.log(delivery_detail.rating);
+
+    //nested object just like a java predefiened function inside various small fuction 
+
+    //import java.util.Math; "util" is an object "Math" is an inside function just like same of js
+
+    //In js can be used object to inside of various pre-function included it eg i below it 
+
+    console.log(typeof console); //object that means pre defined function like util,io..
+
+    console.log(typeof console.log); // this function like math ,scanner in java
+
+    //object Inside create function just like java class inide of all methods,variable..
+    
+    //in js all are inside of objects
+    delivery_detail.fun(); //this is nested function inside of objects see code line in 59
+
+    
   </script>
 </body>
 </html>
