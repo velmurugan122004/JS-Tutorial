@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="
+       const coin=Math.random();
+       let result='';
+       if(coin<=0.5)
+       {
+        result='Head';
+       }
+       else
+       {
+        result='Tail';
+       }
+
+       if(result==='Head')
+       {
+         console.log('You Win');
+       }
+       else
+       {
+        console.log('You Loss');
+       }
+
+    ">Head</button>
+  <button onclick="
+       coin=Math.random();
+       console.log(coin);
+       console.log(coin/2);
+       result='';
+       if(coin<=0.5)
+       {
+        result='Head';
+       }
+       else
+       {
+        result='Tail';
+       }
+
+       if(result==='Tail')
+       {
+         console.log('You Win');
+       }
+       else
+       {
+        console.log('You Loss');
+       }">Tail</button>
+  
+</body>
+</html>
