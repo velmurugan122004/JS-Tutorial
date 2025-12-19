@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+  function comparePrice(product1,product2)
+  {
+    if(product1.price<product2.price)
+    {
+      return product1;
+    }
+    return product2;
+  }
+  function isSameProduct(product1,product2)
+  {
+    if(product1.product_name===product2.product_name && product1.price===product2.price)
+    {
+      return true;
+    }
+    return false;
+  }
+  const product={
+    product_name:"Football",
+    price:195
+  };
+  const product1={
+    product_name:"Basketball",
+    price:2095
+  };
+  const product2={
+    product_name:"volleyball",
+    price:1095
+  };
+  console.log(product);
+  console.log(product.product_name);
+  console.log(product.price);
+  //update price
+  product.price+=500;
+  console.log(product.price);
+
+  product["delivery-time"]="3 days";
+
+  console.log(product);
+
+  console.log(comparePrice(product1,product2));
+  console.log(comparePrice(product,product2));
+
+  console.log(isSameProduct(product,product));//same product so true
+
+  console.log(isSameProduct(product1,product2));
+
+  console.log(product.product_name.toLowerCase());//string to be lowercase
+
+  console.log(product.product_name.repeat(2));
+</script>
+
+</body>
+</html>
