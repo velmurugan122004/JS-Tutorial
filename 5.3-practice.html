@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="setType('f2c')">Fahrenheit</button>
+  <button onclick="setType('c2f')">Celsius</button>
+
+  <h1 id="title">Choose Convertor</h1>
+
+  <p id="inputLabel"></p>
+  <input type ="number" id="temp" placeholder="Enter value :">
+  <br><br>
+
+  <button onclick=" calculate();">Convert</button>
+
+  <h1>Show Result : </h1>
+  <p id="result"></p>
+
+  <script>
+    let type="";
+    function setType(type1)
+    {
+      type=type1;
+      if (type === "f2c") {
+        document.getElementById("title").innerText =
+          "Fahrenheit to Celsius Converter";
+        document.getElementById("inputLabel").innerText =
+          "Fahrenheit :";
+      } else {
+        document.getElementById("title").innerText =
+          "Celsius to Fahrenheit Converter";
+        document.getElementById("inputLabel").innerText =
+          "Celsius :";
+      }
+
+      document.getElementById("temp").value = "";
+      document.getElementById("result").innerText = "";
+    }
+
+    
+    function calculate()
+    {
+      let value=Number(document.getElementById("temp").value);
+      let result;
+      if(type==='f2c')
+      {
+        result=(value-32)*5/9;
+        document.getElementById("result").innerText=result.toFixed(2);
+      }
+      else if(type==='c2f')
+      {
+        result=(value*9/5)+32;
+        document.getElementById('result').innerText=result.toFixed(2);
+      }
+      else{
+        alert('please choose convertor first');
+        document.getElementById("result").innerText =
+          "Please choose a converter first!";
+      }
+    }
+    
+  </script>
+</body>
+</html>
