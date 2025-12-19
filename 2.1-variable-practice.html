@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Restuarant Bill</title>
+    </head>
+    <body>
+      <h1>List | Quantity | Total Count| Prices</h1>
+      <p>Coffee :<button onclick="
+      
+         coffeeQuantity += 1;
+         console.log('Coffee Quantity : ',coffeeQuantity);
+
+        ">+</button> 
+        
+        <button onclick="
+         coffeeQuantity-=1;
+         console.log('Coffee Quantity : ',coffeeQuantity);
+        ">-</button>
+        Quantity :<span id="cofqty">0</span>
+      </p>
+
+      <p>Tea :<button onclick="
+      
+      
+         console.log('Tea Quantity : ',teaQuantity += 1);
+
+        ">+</button> 
+        <button onclick="
+         teaQuantity-=1;
+         console.log('Tea Quantity : ',teaQuantity);
+        ">-</button>
+        Quantity :<span id="teaqty">0</span>
+      </p>
+
+      <p>Boost :<button onclick="
+      
+      
+         console.log('Boost Quantity : ',boostQuantity += 1);
+
+        ">+</button> 
+        <button onclick="
+         boostQuantity-=1;
+         console.log('Boost Quantity : ',boostQuantity);
+        ">-</button>
+        Quantity :<span id="booqty">0</span>
+      </p>
+
+     <hr>
+     <h2>Total Bill: ₹<span id="total">0</span></h2> 
+     <button onclick="resetCart()">Reset</button>
+        <script>
+            let coffeeQuantity=0;
+            let teaQuantity=0;
+            let boostQuantity=0;
+            
+            const teaCost=10;
+            const boostCost=20;
+            const coffeeCost=15;
+
+
+        </script>
+    </body>
+</html>
+
