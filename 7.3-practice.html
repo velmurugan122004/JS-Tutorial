@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOM practice</title>
+    </head>
+    <body>
+        <button>Good morning</button><!--9a-->
+        <button class="js-night">Good night</button><!--9b-->
+        <br><br>
+        <!--9c-->
+        <button class="js-head" onclick="
+        result('Head');
+        ">Head</button>
+        <button class="js-tail" onclick="
+        result('Tail');
+        ">Tail</button>
+        <p class="js-result"></p>
+
+        <br><br>
+        <!--9c-->
+        <input placeholder="Enter Name" onkeydown="
+        handleevent(event);
+        " class="js-input">
+        <button onclick="
+        finalOutput();">Submit</button>
+        
+        <p class="js-final"></p>
+        
+        <!--9h-->
+        <input class="js-input1" placeholder="enter any display it" 
+        onkeyup="
+         const input1=document.querySelector('.js-input1');
+
+         document.querySelector('.js-display').innerHTML=input1.value;
+         
+        ">
+        <p class="js-display"></p>
+
+
+
+        <script>
+
+          const buttonElement=document.querySelector('button').innerText;
+          console.log(buttonElement);
+
+          console.log(document.querySelector('button').innerHTML);
+          //9b
+
+          const butt=document.querySelector('.js-night');
+          butt.innerHTML="sweet";
+          console.log(butt.innerText);
+
+          //9c
+          function result(string)
+          {
+            console.log(`You Choose :${string}`);
+
+            document.querySelector(".js-result").innerHTML=`You Choose :${string}`;
+            
+          }
+
+
+          //9d
+          function finalOutput()
+          {
+            const inputElement=document.querySelector('.js-input');
+          document.querySelector('.js-final').innerHTML=`Your Name :${inputElement.value}`;
+          }
+          function handleevent(event)
+          {
+            if(event.key==='Enter')
+            {
+              finalOutput();
+            }
+          }
+        </script>
+    </body>
+</html>
+
