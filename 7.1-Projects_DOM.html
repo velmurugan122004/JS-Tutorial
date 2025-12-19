@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>DOM Projects</title>
+</head>
+<body>
+  <p>Youtube Scubscribe Button</p>
+  <button class="subscribe-button" onclick="
+  // clickButton();  //this one way
+  subscribeButton();
+  ">Subscribe</button>
+<br><br>
+
+  <h1>Rock-Paper-Scissor</h1>
+  <a href="stone_paper_scisssor-game/stone-paper-scissor-live updated-score-in page.html">Click here</a> <!--goes to stone-paper-scissor game folder -one html file can be opened-->
+  <br><br><br>
+  
+   <p>Amazon Shipping Calculator</p>
+   <p>You Have order more than 50 -FREE SHIPING</p>
+   <input placeholder="cost of order" class="js-input" onkeydown="
+   handleCostEvent(event);
+   ">
+
+
+   <button onclick="
+   CalculateTotal(); 
+   ">Calculate</button>
+   <p class="js-total-cost"></p>
+  <script>
+    /*function clickButton()
+    {
+      const buttonElement=document.querySelector('.subscribe-button').innerHTML="Subscribed";
+      console.log(buttonElement);
+    }*/
+
+   function subscribeButton()
+   {
+        const butt=document.querySelector('.subscribe-button');
+
+        //document.querySelector('.subscribe-button').innerHTML=(butt.innerHTML==='Subscribe'?'Subscribed':'Subscribe');
+
+
+        butt.innerHTML==='Subscribe'?'Subscribed':'Subscribe'; //notworking yy means innerHTML only uer first given space of button like Subscribe have 8 letter but Subscribed have 9 letter o not fixed thi can be overcome with help of innerText
+        console.log(butt.innerHTML);
+        butt.innerHTML=butt.innerText==='Subscribe'?'Subscribed':'Subscribe';
+   }
+   function CalculateTotal()
+   {
+      const inputElement=document.querySelector('.js-input');
+      //usually dom to get answer shold be string only
+      let cost=Number(inputElement.value);//if number not used means that can be string so output 25+10=2510
+
+      cost=cost<=40?cost+10:cost;
+
+      document.querySelector('.js-total-cost').innerHTML=`$${cost.toFixed(2)}`;
+   }
+   function handleCostEvent(event)
+   {
+         
+        if(event.key==='Enter')
+        {
+          CalculateTotal();
+        }
+        //else is(event.key)
+   }
+    
+  </script>
+</body>
+</html>
