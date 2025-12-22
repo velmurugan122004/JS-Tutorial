@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Practice program</title>
+    <style>
+      /*10a*/
+      .js-cart-button{
+        background-color: rgb(255,216, 20);
+        color: black;
+        padding: 15px 65px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        
+        font-weight: bold;
+        
+      }
+
+      /*10b*/
+      .js-request-button{
+        background-color: black;
+        color: rgb(230,230,230);
+        padding:10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .js-schedule-button{
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+      }
+
+      /*10d*/
+      .js-toggle{
+        background-color: rgb(230,230,230);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        color: black;
+        font-size: 15px;
+        cursor: pointer;
+        margin-right:10px;
+      }
+      .is-toggled{
+        background-color: black;
+        color: white;
+      }
+      /*10h*/
+      .cost-input{
+      font-size: 15px;
+      /*padding-top:10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;*/
+      padding: 10px;/*same for above 4 linw*/
+    }
+    .js-calculate-button{
+      padding: 10px 15px;/*first 10px top and button next 15px i left and right*/ 
+      border: none;
+      background-color:green;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .error{
+      color: red;
+    }
+    </style>
+
+  </head>
+  <body>
+    <!--10a-->
+    <button class="js-cart-button">Add to Cart</button>
+    <br><br>
+    <!--10a-->
+    <button class="js-request-button">Request now</button>
+    <button class="js-schedule-button">Schedule for later</button>
+   <br>
+   <br>
+    <!--10c-->
+    <button class="js-button" onclick="call();">Test</button>
+   <br><br>
+    <!--10d-->
+    <button class="js-toggle " onclick="
+    checkToggle(this);
+    ">Gaming</button>
+    <button class="js-toggle" onclick="
+    checkToggle(this);">Music</button>
+    <button class="js-toggle" onclick="
+    checkToggle(this);">Tech</button>
+    <!--10h-->
+    <br><br><br>
+  
+   <p>Amazon Shipping Calculator</p>
+   <p>Orders under $40=+$10 shipping fee</p>
+   <p>Orders over $40 =FREE shipping</p>
+   <input placeholder="cost of order" class="js-input cost-input" onkeydown="
+   //handleCostEvent(event);
+   checkError(event);//check error like less than 0
+   ">
+
+
+   <button onclick="
+   CalculateTotal(); 
+   " class="js-calculate-button">Calculate</button>
+   <p class="js-total-cost"></p>
+
+
+    <script>
+      console.log(document.querySelector('.js-button').classList.contains('js-button'));
+      //10c
+      function call()
+      {
+        const check=document.querySelector('.js-button');
+        
+        /*if(check.className==='js-button')
+        {
+          console.log('true');
+          return;
+        }
+        console.log('false');
+        return;*/
+        //rather than use
+        console.log(check.classList.contains('js-button'));
+      }
+
+      //10d
+      function checkToggle(check1)
+      {
+        //const check1=document.querySelector('.js-toggle');because used of this keyword get class in html sheet
+
+        
+        /*
+        if(!check1.classList.contains('is-toggled'))
+        {
+          check1.classList.add('is-toggled');
+        }
+        else{
+          check1.classList.remove("is-toggled");
+        }*/
+        
+        //instead of using toggle predefined
+
+        check1.classList.toggle('is-toggled');
+      }
+
+      function CalculateTotal()
+   {
+      const inputElement=document.querySelector('.js-input');
+      //usually dom to get answer shold be string only
+      let cost=Number(inputElement.value);//if number not used means that can be string so output 25+10=2510
+
+      
+
+      cost=cost<=40?cost+10:cost;
+
+      document.querySelector('.js-total-cost').innerHTML=`$${cost.toFixed(2)}`;
+   }
+   
+   function checkError(checkEvent)
+   {  const inp=(document.querySelector('.js-input')); //get input value
+      const disableButton=document.querySelector('.js-calculate-button'); //button on calculate
+      setTimeout(()=>{ //
+        const cost=Number(inp.value);
+      if(checkEvent.key==='-' || cost<0 ||inp.value==='-')
+      {
+        disableButton.disabled=true;
+        disableButton.style.opacity=0.1;
+        document.querySelector('.js-total-cost').innerHTML =
+  `<span class="error">Error : cost cannot be less than 0</span>`;
+
+      }
+      else if(checkEvent.key==='Enter')
+      {
+          CalculateTotal();
+          console.log(checkEvent.key);
+          return;
+      }
+      else{
+        disableButton.disabled=false;
+        disableButton.style.opacity=1;
+        document.querySelector('.js-total-cost').innerHTML =``;
+      }
+      },0)
+   }
+    </script>
+  </body>
+</html>
