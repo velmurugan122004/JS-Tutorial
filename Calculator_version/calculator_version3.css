@@ -1,0 +1,45 @@
+body{
+  background-color:black;
+  color: white;
+}
+.calculation{
+  color: white;
+  font-size: 45px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+.button-result{
+  height: 60px;
+  width: 300px;
+  background-color:rgb(51, 51, 51);
+}
+.calculator-button{
+  border: none;
+  border-radius: 60px;
+
+  cursor: pointer;
+
+  font-size: 25px;
+
+  margin-right: 5px;
+
+  height: 70px;
+  width: 70px;
+}
+.click-num{
+  background-color: rgb(51, 51, 51);
+  color: white;
+  
+}
+.click-operation{
+  background-color: rgb(254, 160, 10);
+  color: white;
+  
+}
+.click-clear{
+  background-color: rgb(237, 72, 72);
+  border: none;
+  border-radius: 50px;
+  font-size: 40px;
+  padding: 10px;
+}

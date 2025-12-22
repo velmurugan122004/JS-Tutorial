@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Calculator</title>
+  
+</head>
+<body>
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('1');
+    ">1</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('2');
+    ">2</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('3');
+    ">3</button>
+  <button class="calculator-button click-operation" onclick="
+  calculate('+');
+    ">+</button></p>
+
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('4');
+    ">4</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('5');
+    ">5</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('6');
+    ">6</button>
+  <button class="calculator-button click-operation" onclick="
+  calculate('-');
+    ">-</button>
+  </p>
+
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('7');
+    ">7</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('8');
+    ">8</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('9');
+    ">9</button>
+  <button class="calculator-button calculator-button click-operation" onclick="
+  calculate('*');
+    ">*</button>
+  </p>
+
+  <p>
+  <button class="calculator-button click-num "onclick="
+  calculate('0');
+    ">0</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('.');
+    ">.</button>
+  <button class="calculator-button click-num" onclick="
+  if(total!=='')
+  {
+    total=eval(total);
+  }
+  
+  displayCalculation();
+  localStorage.setItem('calculation',total);
+  ">=</button>
+  <button class="calculator-button click-operation">/</button>
+  </p>
+  <br>
+  <button class="click-clear" onclick="
+      total='';
+      displayCalculation();
+  ">clear</button>
+
+  <script>
+          let total='';
+
+           displayCalculation();
+
+        function calculate(value)
+        {
+          total+=value;
+          displayCalculation();
+        }
+        function displayCalculation()
+        {
+          console.log(total);
+        }
+
+  </script>
+      
+
+</body>
+</html>

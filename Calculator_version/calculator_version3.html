@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator_version3.css">
+</head>
+<body>
+  <p >
+    <button class="button-result"><p class="js-result calculation"></p></button>
+  </p>
+  <br>
+  
+  <br>
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('1');
+    ">1</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('2');
+    ">2</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('3');
+    ">3</button>
+  <button class="calculator-button click-operation" onclick="
+  calculate('+');
+    ">+</button></p>
+
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('4');
+    ">4</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('5');
+    ">5</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('6');
+    ">6</button>
+  <button class="calculator-button click-operation" onclick="
+  calculate('-');
+    ">-</button>
+  </p>
+
+  <p>
+  <button class="calculator-button click-num" onclick="
+  calculate('7');
+    ">7</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('8');
+    ">8</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('9');
+    ">9</button>
+  <button class="calculator-button calculator-button click-operation" onclick="
+  calculate('*');
+    ">*</button>
+  </p>
+
+  <p>
+  <button class="calculator-button click-num "onclick="
+  calculate('0');
+    ">0</button>
+  <button class="calculator-button click-num" onclick="
+  calculate('.');
+    ">.</button>
+  <button class="calculator-button click-num" onclick="
+  total=eval(total);
+  displayCalculation();
+  localStorage.setItem('calculation',total);
+  ">=</button>
+  <button class="calculator-button click-operation">/</button>
+  </p>
+  <br>
+  <button class="click-clear" onclick="
+      total='';//assign empty
+      displayCalculation();//means after clear button data clear but display not clear result ao it can be used
+      localStorage.setItem('calculation',total);//already store value so it can be empty
+  ">clear</button>
+
+  <script src="calculator_version3.js"></script>
+  </script>
+
+</body>
+</html>
