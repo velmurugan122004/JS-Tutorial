@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Arrays & Loops</title>
+  </head>
+  <body>
+    <script>
+      const myArray= [10 ,20 ,30];//this is array list of more value 
+      console.log(myArray);
+
+      console.log(myArray[0]);//sepicific value in array
+
+      //in js doen't any restriction of store datatype based like 
+      
+      let arr = [1, "hello", true, null, {name: "Vels"}, [10, 20],function () {
+    console.log("Hi Vels");
+    return 'hi';
+  }];
+
+      console.log(arr[4].name);//accces object
+
+      console.log(arr[6]());
+
+
+      myArray[0]=5;//update array value
+      console.log(myArray);
+
+
+      //check it's array
+      console.log([1,2]);//first it's says object because array i one of the specialist object
+
+      console.log(Array.isArray([1,2])); //it's true because that is array
+      console.log(Array.isArray(0));
+
+      //calculate length of the array
+      console.log(myArray.length);
+
+      //add value in array but in last poition only l
+      myArray.push(100);
+      console.log(myArray);
+
+      //it can be remove first value in array
+      myArray.splice(0,1);//first 0 says-what value u to remove ,second 1 says-how many value remove based on index position
+
+
+      console.log(myArray);
+
+      //now see loops
+      //1-while 
+    /*syntax-while(condition)
+    {
+    scopeof currly brackets
+      increment
+    }*/
+
+      let i=1;
+      while(i<=5)//condition line
+      {
+        console.log(i);//print value
+        i++;//increment
+      }
+
+      //why use while loops means below exapmle you can see
+
+      let randomNumber=0;
+
+      while(randomNumber<0.5)
+      {
+        randomNumber=Math.random();//Nonstatndard loop because not normal like increment to top loop based on cope of the process this time while is best for it
+        randomNumber= randomNumber.toFixed(2);
+      }
+      console.log(randomNumber);
+      //2-for loop
+      //syntax
+
+      /*
+        for (initialization; condition; increment/decrement) {
+            // code to be executed
+        }
+      */
+      for(let i=1;i<=3;i++)
+      {
+        console.log(i);
+      }
+
+
+      //using loop in array
+
+      const todolist=[
+        'make dinner','wash dishes','watch TV'
+      ];
+
+      for(let i=0;i<todolist.length;i++)
+      {
+        console.log(todolist[i]);
+      }
+
+      //for each loop //cannot be use break/continue
+
+      //syntax
+      /*
+      array.forEach(function(item, index, array) {
+          // code runs for each element
+      });*/
+
+
+          todolist.forEach(function(item,index)
+        {
+          console.log(index,item);
+        });
+
+    //orginal array print means 
+      todolist.forEach(function(item, index, array) {
+          console.log(array);
+      });
+
+    //only print items means 
+      todolist.forEach((item) => {
+            console.log(item);
+      });
+
+    //modern version for each loop
+
+    /*syntax
+
+        for (let item of iterable) {
+               // code runs for each item
+         }
+
+    */
+
+      const fruits = ["apple", "banana", "orange"];
+
+      for (let fruit of fruits) {
+        console.log(fruit);
+      }
+
+
+
+
+
+      //total of array
+      const nums=[1,1,3,3];
+      const total1=0;//not store it cause errorr because below update 
+      let total2=0;
+
+      for(let j=0;j<nums.length;j++)
+      {
+        total2+=nums[j];
+      }
+
+      console.log(total2);
+
+
+      //all value of nums should be doubled
+      console.log(nums);
+      const numsDoubled=[];
+      for(let ind of nums)
+      {
+        numsDoubled.push(ind*2);
+      }
+
+      console.log(numsDoubled);
+      
+      //if array inide multiple dattype means you can be ued thi model like  in below inside nested array that array alo number availabe 
+      let arr1 = [10, "20", true, null, { name: "Vels" }, [5, 15], function(){}];
+
+        let totals = 0;
+
+        for (let item of arr) {
+          if (typeof item === "number") {
+            totals += item;
+          } 
+          else if (Array.isArray(item)) {
+            for (let num of item) {
+              if (typeof num === "number") {
+                totals += num;
+              }
+            }
+          }
+        }
+
+        console.log(totals);
+
+
+
+    </script>
+  </body>
+</html>
