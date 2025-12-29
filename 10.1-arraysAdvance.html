@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>advanced array</title>
+  </head>
+  <body>
+    <script>
+      const array1=[1,2,3];
+      const array2=array1;//thi is only store reference not value so once you can change of array2 /array1 means both can be changed ee below
+
+      array2.push(4);
+      console.log(array1);
+      console.log(array2);//both are same output this way reference can be works thi can be overcome means using slice
+
+      const array3=array2.slice();//thi means copy the value not reference
+
+      array3.push(5);
+      console.log(array2);
+      console.log(array3); 
+
+      const[firstarray,secondarray]=[1,2,3];//it can be used to get value of 1, 2 in firstarray nad secondarray mean using destructing
+
+      console.log(firstarray);//output 1
+      console.log(secondarray);//output 2 
+
+      //break and continue in loop
+
+      for(let i=0;i<=10;i++)
+      {
+        if(i==3)
+        {
+          continue;//skip only 3 
+        }
+        console.log(i);
+        if(i==8)
+        {
+          break;//top loop
+        }
+      }
+      console.log('-------------------------');
+      let i=1;
+      while(i<=10)
+      {
+        if(i%3==0)
+        {
+          i++;
+          continue;
+        }
+        console.log(i);
+        i++;
+      }
+    </script>
+  </body>
+</html>
