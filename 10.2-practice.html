@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>arrays & loops practice</title>
+  </head>
+  <body>
+    <script>
+
+      const array1=['hello','world','search','good'];
+
+      let index=-1;
+      for (let i = 0; i < array1.length; i++) {
+          if (array1[i] === 'search') {
+            index = i;
+          }
+      }
+      console.log(index);
+    //11 P
+      const array2=['hello','world','search','good',`search`];
+      for (let i = 0; i < array2.length; i++) {
+          if (array2[i] === 'search') {
+            index = i;
+            break; //if not break means last search index only update it
+          }
+        }
+        console.log(index);
+
+      //10 q
+      function findIndex(array,word)
+      {
+        let index=0;
+        console.log(recursion(array,word,index));
+      }
+
+      function recursion(arr,word,ind)
+      {
+        if(arr.length===ind)
+        {
+          return -1;
+        }
+        return (arr[ind]===word)?ind:recursion(arr,word,ind+1);
+      }
+      const array3=['hello','world','search','good',`search`];
+      findIndex(array3,'world1');
+
+      //10 r
+
+    function removeWord(array,removeword)
+    {
+      const arrray=[];
+      for(let i=0;i<array.length;i++)
+      {
+          if(array[i]===removeword)
+          {
+            continue;
+          }
+          else{
+            arrray.push(array[i]);
+          }
+      }
+      return arrray;
+    }
+    console.log(removeWord(['egg','apple','egg','egg','ham'],'egg'));
+
+    //10s
+    function removeEgg(foods) {
+        const result = [];
+        let eggsRemoved = 0;
+
+        for (let i = 0; i < foods.length; i++) {
+          // Only skip 'egg' if we removed less than 2
+          // of them so far.
+          if (foods[i] === 'egg' && eggsRemoved < 2) {
+            eggsRemoved++;
+            continue;
+          }
+
+          result.push(foods[i]);
+        }
+
+        return result;
+      }
+
+      console.log(removeEgg(['egg', 'apple', 'egg', 'egg', 'ham']));
+
+
+    //own 
+    function removeWordExpectFirst(array,removeword)
+    {
+      const arrray=[];
+      let count=0;
+      for(let i=0;i<array.length;i++)
+      {
+          if(array[i]===removeword)
+          {
+            if(count<1)
+            {
+              count++;
+              arrray.push(array[i]);
+            }
+            else{
+              continue;
+            }
+          }
+          else{
+            arrray.push(array[i]);
+          }
+          
+          
+      }
+      return arrray;
+    }
+    console.log(removeWordExpectFirst(['egg','apple','egg','egg','ham'],'egg'));
+
+  //10 t
+    function removeWordExpectFirstReverse(array,word)
+    {
+      let count=0;
+      const arrray=[];
+      for(let i=array.length-1;i>=0;i--)
+      {
+        if(array[i]==word && count<2)
+        {
+          count++;
+          continue;
+        }
+        else{
+          arrray.push(array[i]);
+        }
+      }
+      return arrray.reverse();
+    }
+    console.log(removeWordExpectFirstReverse(['egg','apple','egg','egg','ham'],'egg'));
+
+    //10u
+    function removeWords(array,word)
+    {
+      let count=0;
+      const arrray=[];
+      const reversearr=array.slice().reverse();
+      for(let i=0;i<reversearr.length;i++)
+      {
+        if(reversearr[i]===word && count<2)
+        {
+          count++;
+          continue;
+        }
+        arrray.push(reversearr[i]);
+      }
+      return arrray.reverse();
+    }
+    console.log(removeWords(['egg','apple','egg','egg','ham'],'egg'));
+    </script>
+  </body>
+</html>
