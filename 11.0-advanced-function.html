@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced function</title>
+  </head>
+  <body>
+    <script>
+      greetings();
+      function greetings()//easier to read, hoisting -means before create code like line 8
+      {
+        console.log('hello');
+      }
+      greetings();  
+
+      const num=2;//means 2 can be store in num variable 
+      
+      const function1=function greetings()//in js function are value;
+      {
+        console.log('hello2');
+      }
+      console.log(function1);
+      console.log(typeof function1);
+
+      function1();//print hello2
+
+       //anonymous function
+      const function2=function()//in js function function name i not needed becaue infront function2 has a function name 
+      {
+        console.log('hello3');
+      }
+      console.log(function2);
+      console.log(typeof function2);
+
+      function2();//print hello2  
+
+
+      const object1={
+        num:2,
+        //fun:function greetings()
+        fun:function()//annonymou function
+        {
+          console.log('hello4');
+        }
+      };
+      object1.fun();
+
+      function display(params) {
+        console.log(params);
+      }
+      display(333);
+
+      //passing function into another function
+
+      function run(params) {
+        console.log(typeof params);//this parameter in run function but it alo function because passing value using another function
+        params();
+      }
+
+      run(function() {
+        console.log('hello5');
+      });
+    </script>
+  </body>
+</html>
