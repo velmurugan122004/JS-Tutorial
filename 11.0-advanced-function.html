@@ -74,9 +74,24 @@
 
       //setInterval(it can be keep givenn Second repeat)
 
-      setInterval(function(){//this also aynchronous code
+      let interval=setInterval(function(){//this also aynchronous code
         console.log('interval');
       },3000);//it can be keep every three second
+
+      //clearInterval
+      clearInterval(interval);//stop interval
+
+
+
+
+      ['make dinner','wash cloth','watch youtube'].forEach(function(value,index) {
+        console.log(index);
+        console.log(value);
+      });
+
+      //now we seee practical exapmle of for each loop in 11.3
+
+      
     </script>
   </body>
 </html>
