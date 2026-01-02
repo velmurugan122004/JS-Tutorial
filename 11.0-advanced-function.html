@@ -59,6 +59,24 @@
       run(function() {
         console.log('hello5');
       });
+
+      //setTimeout
+
+      setTimeout(function(){
+        console.log('timeout')
+      },3000); //after 3 second that function can be run and diplay function ,thi is the best example of callback function 
+
+      //asynchronou code(won't wait for line to finish before going to the next line)(line 65)
+
+      //synchronou code( wait for one line to finish before going to the next line)normally js code run line by line
+
+      console.log('next line');//first display next line then after 3 second timeout can be display
+
+      //setInterval(it can be keep givenn Second repeat)
+
+      setInterval(function(){//this also aynchronous code
+        console.log('interval');
+      },3000);//it can be keep every threee second
     </script>
   </body>
 </html>
