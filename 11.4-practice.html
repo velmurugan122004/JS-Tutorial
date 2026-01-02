@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>practice problem</title>
+  </head>
+  <body>
+    <button class="js-button" onclick="updateButton();">Start</button>
+    <br><br>
+    <button class="js-button1" onclick="updateButton1();">Start</button>
+    <br><br>
+
+    <button class="js-button2" onclick="updateButton2();">Add to cart</button> 
+    <br>
+    <p class="js-result"></p>
+    <br><br>
+
+    <button onclick="
+    message++;
+    displayNotification();
+    ">Add</button>
+
+    <button onclick="
+      if (message > 0) {
+        message--;
+
+        // If there are no new messages, stop displaying
+        // the notification in the tab.
+        if (message === 0) {
+          stopNotification();
+        }
+      }
+    ">Remove</button>
+
+
+    <script>
+      const add=function()
+      {
+        console.log(2+3);
+      }
+      add();
+      add();
+
+      //12b
+
+      function runTwice(fun)
+      {
+        fun();
+        fun();
+      }
+
+      runTwice(function(){
+        console.log('12b');
+      })
+
+      //12c
+      function updateButton()
+      {
+          const htmlElement=document.querySelector('.js-button');
+
+          setTimeout(function(){
+            htmlElement.innerHTML='Finished';
+          }, 1000);
+      }
+      //12d
+
+      function updateButton1()
+      {
+        const htmlElement=document.querySelector('.js-button1');
+        htmlElement.innerHTML='loading...';
+
+        setTimeout(function()
+      {
+        htmlElement.innerHTML='Finished!';
+      },1000);
+      }
+
+      //12f 12e
+      let interval;
+      function updateButton2()
+      { const htmlElement=document.querySelector('.js-result');
+      
+      htmlElement.innerHTML='Added';
+
+      // First, cancel the previous timeout so that
+      // it doesn't remove the message too quickly.
+      clearTimeout(interval);
+        interval=setTimeout(function()
+      {
+        htmlElement.innerHTML='';
+      },3000);
+
+      
+      }
+      //12g
+      /*
+      setInterval(function(){
+        if(document.title==='practice problem')
+        {
+          document.title='(2) New messages';
+        }
+        else{
+          document.title='practice problem';
+        }
+      },1000);*/
+
+      //12h 
+     /* let message=2;
+
+      setInterval(function(){
+        if(document.title==='practice problem')
+        {
+          document.title=`(${message}) New Message`;
+        }
+        else{
+          document.title='practice problem';
+        }
+      },1000);*/
+
+      //12i
+
+      let message=2;
+
+      // Save the intervalId in case we need to cancel it.
+      let intervalId;
+
+      // We'll use this variable to keep track of whether
+      // or not we're displaying the notification.
+      let isDisplayingNotification=false;
+
+      // Start displaying the notification in the tab
+      // when the page first loads.
+      displayNotification();
+
+      function displayNotification()
+      {
+        if(isDisplayingNotification){
+          return;
+        }
+
+        isDisplayingNotification=true;
+
+        intervalId=setInterval(function(){
+          if(document.title==='practice problem'){
+            document.title=`(${message}) New message`
+          }
+          else{
+            document.title='practice problem'
+          }
+        },1000);
+      }
+
+      function stopNotification(){
+        isDisplayingNotification=false;
+
+        clearInterval(intervalId);
+        document.title = 'practice problem';
+      }
+      
+    </script>
+  </body>
+</html>
