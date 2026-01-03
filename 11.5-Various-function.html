@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  
+  <title>Various Function</title>
+</head>
+<body>
+  <script>
+    //regularFunction
+    const regularFunction=function(){
+      console.log('hello buddy');
+    }
+
+    //Arrow function
+
+    const arrowFunction=()=>{
+      console.log('Hello');
+    }
+
+    console.log(typeof arrowFunction);
+    arrowFunction();
+
+    //different ways of wriring arrow function
+
+    const onwParam=param=>{
+      console.log(param*2);
+    }
+    onwParam(2);
+
+    const oneLine=()=>2+3;//doesn,t mention return but return value;
+    console.log(oneLine());
+  </script>
+</body>
+</html>
