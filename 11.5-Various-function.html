@@ -4,7 +4,9 @@
   <title>Various Function</title>
 </head>
 <body>
+  <button onclick="" class="js-button">Click</button>
   <script>
+    
     //regularFunction
     const regularFunction=function(){
       console.log('hello buddy');
@@ -28,6 +30,42 @@
 
     const oneLine=()=>2+3;//doesn,t mention return but return value;
     console.log(oneLine());
+
+    //arrow function not best fo ome of the place like before creation function call function that means (Not Hosting)
+
+    const arr=['vel','vino','vasa','ris','good','dhiv','sam','rosh','deeep'];
+
+    //arr.forEach(function(value){   (regular one)
+    arr.forEach((value)=>{     //arrow function one function inideother function mean you can use arrow function
+      console.log(value);
+    });
+
+    //now also yy used regular function best insted of normal function 
+
+    const object2={
+      /*method:()=>{
+         
+        this is more complicated then usual one in best regular in inside object
+      }*/
+
+
+      method() {
+        
+      }
+    }
+
+    //for every html element has been method called addEventListner
+    const buttonElement=document.querySelector('.js-button');
+
+    buttonElement.addEventListener('click',()=>{
+        console.log('clicked');
+    });
+    //multiple event listener same name and same time run
+    buttonElement.addEventListener('click',()=>{
+      console.log('clicked 2');
+    });
+
+
   </script>
 </body>
 </html>
