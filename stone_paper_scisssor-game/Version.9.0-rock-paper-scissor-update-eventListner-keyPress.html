@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rock-Paper-Scissor Game</title>
+  <link rel="stylesheet" href="Version.9.2-rock-paper-scissor-update-eventListner-keyPress.css">
+</head>
+<body>
+  
+  <button class="js-theme" onclick="checkToggle();">Theme</button>
+
+  <p class="title">Rock Paper Scissor</p>
+  <p class="title">(r|R-Rock,p|P-Paper,s|S-Scissor)</p>
+   <p>Key Press:( r | p | s ) ( R | P | S ) Play Game</p>
+  <button class="move-button js-rock-button"><img class="move-icon" src="../pics/rock-paper-scissor/rock-emoji.png"></button>
+  <button class="move-button js-paper-button"><img class="move-icon" src="../pics/rock-paper-scissor/paper-emoji.png"></button>
+  <button class="move-button js-scissor-button"><img class="move-icon" src="../pics/rock-paper-scissor/scissor-emoji.png"></button>
+
+  <p class="js-result result1"></p>
+
+  <p class="js-move"></p>
+
+  <p class="updatedScore score"></p>
+  
+
+  <button class="reset-score-button" onclick="
+  score.wins=0;
+  score.Ties=0;
+  score.losses=0;
+  localStorage.removeItem('score');
+  alert('Score Reset!');
+  updateScore();
+  ">Reset Score 🔄</button>
+  <button class="js-autoplay reset-score-button" onclick="autoPlay();">Autoplay 🔄</button>
+
+
+  <script src="Version.9.1-rock-paper-scissor-update-eventListner-keyPress.js"> </script>
+</body>
+</html>
