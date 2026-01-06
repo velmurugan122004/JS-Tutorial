@@ -91,7 +91,38 @@
 
       //now we seee practical exapmle of for each loop in 11.3
 
-      
+      //variou function to be seee
+
+      //1-filter
+      //it can be create new array check it return true means put value not mean not put
+
+      //important it can avoid of loop then get alla values inarray and processs it based on the user condition
+
+      const arrr=[1,-3,5].filter((value,index)=>{
+        if(value>=0) return true;
+
+        else return false;
+
+      });
+      console.log(arrr);
+
+      //2-map
+      //it means create new array what can you return that alll can be store in the that new array then return it baed on user need 
+
+      //important it can avoid of loop then get alla values inarray and processs it based on the user condition
+      const arr=[1,1,3].map((value,index)=>{
+          return value *2;
+      });
+      console.log(arr);
+      //now shortant of the above function
+
+      const arr1=[1,2,3].map(value => value*2);
+      console.log(arr1);
+
+      //closure
+      //it means function has access to value
+      //it will always have access to that value it only inside function acesss 
+      //in above line 113 index i one parameter that value only use that function if outside of function we used means error that is 'closure'
     </script>
   </body>
 </html>
