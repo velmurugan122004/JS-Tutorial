@@ -56,14 +56,22 @@
 
     //for every html element has been method called addEventListner
     const buttonElement=document.querySelector('.js-button');
+    const eventListner=()=>{
+        console.log('clicked');
+    }
+    buttonElement.addEventListener('click',eventListner);
+    
+
+    //remove event listner 
+    buttonElement.removeEventListener('click',eventListner);
+
+    //multiple event listener same name and same time run
 
     buttonElement.addEventListener('click',()=>{
-        console.log('clicked');
+      console.log('clicked2');
     });
-    //multiple event listener same name and same time run
-    buttonElement.addEventListener('click',()=>{
-      console.log('clicked 2');
-    });
+
+    
 
 
   </script>
