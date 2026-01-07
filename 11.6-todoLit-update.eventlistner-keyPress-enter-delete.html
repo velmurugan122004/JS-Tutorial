@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do-List</title>
+    <style>
+          body{
+            font-family: Arial;
+          }
+
+          .todo-grid ,.todo-input-grid{
+            display: grid;
+            grid-template-columns: 200px 150px 100px;
+            column-gap: 10px;
+            row-gap: 10px;
+            align-items: center;
+          }
+          .todo-input-grid{
+            margin-bottom: 10px ;
+            align-items: stretch;
+          }
+          .nameStyle,.dateStyle{
+            font-size: 15px;
+            padding: 6px;
+          }
+          .buttonStyle{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+          }
+          .deletebutton{
+            background-color: darkred;
+            color: white;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            padding-top: 10px;
+            padding-bottom: 10px;
+          }
+          
+    </style>
+  </head>
+  <body>
+    <p>To-Do-List practice 4</p>
+    <div class="todo-input-grid">
+
+    <input placeholder="works" class="js-name-input3 nameStyle">
+    <input class="js-date-input3 dateStyle" type="date">
+    <button class="js-add-button buttonStyle">Add</button>
+    </div>
+
+    <div class="js-display-output1 todo-grid"></div>
+
+    <script>
+        const list1=[];//empty list of practice4
+
+        document.querySelector('.js-add-button').addEventListener('click',addtodoList);
+        
+        document.body.addEventListener('keydown',(event)=>{
+          const activeElement=document.activeElement;
+          const deleteButton=document.querySelectorAll('.js-delete');
+
+          if(event.key==='Enter' && 
+            (activeElement.classList.contains('js-name-input3')) ||
+            (activeElement.classList.contains('js-date-input3'))
+            )
+            {
+              addtodoList();
+              return;
+            }
+            if(event.key==='Delete')//keyPres delete means first should be delete
+            {
+              deleteTodo(0,list1);
+              return;
+            }
+        });
+        
+        function addtodoList()
+        {
+          const inputname=document.querySelector('.js-name-input3');
+          const inputdate=document.querySelector('.js-date-input3');
+
+          if (!inputname.value || !inputdate.value) return;
+
+          list1.push({
+            name:inputname.value,
+            date:inputdate.value
+          });
+          console.log(list1);
+          inputname.value='';
+          inputdate.value='';
+          looptodisplay1(list1);
+        } 
+
+        
+        function deleteTodo(index,list)
+        {
+          list.splice(index,1);
+          looptodisplay1(list);
+          console.log("deleted");
+          
+        }
+        function looptodisplay1(list)
+        {
+          let todolistHTML='';
+
+          /*for(let i=0;i<list.length;i++)
+          {
+            const name=list[i].name;
+            const duedate=list[i].date;
+            const html=`
+                          <div>${name}</div>
+                          <div>${duedate}</div>
+                          <button onclick=" 
+                            deleteTodo(${i},list1);
+                          " class="deletebutton">Delete</button>
+                        `; //generating html uing javascript
+            todolistHTML+=html;
+            
+          }*/
+          //console.log(todolistHTML);
+          //instead of uing for each loop 
+          list.forEach(function(todo){
+              const {name, date}=todo;
+            const html=`
+                          <div>${name}</div>
+                          <div>${date}</div>
+                          <button class="deletebutton js-delete">Delete</button>
+                        `; //generating html uing javascript
+            todolistHTML+=html;
+          });
+
+          document.querySelector('.js-display-output1').innerHTML=todolistHTML;
+
+          const deletes=document.querySelectorAll('.js-delete');
+          deletes.forEach((deletebutton, index)=>{
+                deletebutton.addEventListener('click',()=>{
+                  deleteTodo(index,list1);
+                  deleteSelectIndex=-1;
+                });
+
+                
+              }); 
+        }
+        
+
+
+    </script>
+  </body>
+</html>
