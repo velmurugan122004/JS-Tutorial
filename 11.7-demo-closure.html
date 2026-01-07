@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Offer generator and calculator</title>
+  </head>
+  <body>
+    <script>
+      const offerPercent=(percent)=>{
+       /* offerPercent()
+        └── percent stored
+              └── inner functions
+                  └── remember percent*/
+
+  
+        return {
+          totalCost:(price)=>{
+            const discount = price * percent / 100;
+            const finalPrice = price - discount;
+            console.log("Original Price:", price);
+            console.log("Discount %:", percent);
+            console.log("Discount Amount:", discount);
+            console.log("Final Price:", finalPrice);
+          },
+          percentage:()=>{
+            console.log("Offer Percentage:", percent);
+          }
+        };
+      };
+      const user=offerPercent(10);
+      user.percentage();
+      user.totalCost(100);
+      const user1=offerPercent(15);
+      user1.percentage();
+      user1.totalCost(100);
+    </script>
+  </body>
+</html>

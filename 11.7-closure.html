@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Closure</title>
+  </head>
+  <body>
+    <script>
+      /*more detail check link:https://chatgpt.com/share/695dde6c-6438-800c-948f-67d43c2d651d*/
+
+      //A function that remembers the variables from its outer scope, even after the outer function has finished executing.
+
+      //simply remember value after finish
+
+      function outer(x) {
+          return function inner(y) {
+            return x + y;
+          }
+      }
+
+      const add5 = outer(5);//closure 
+      console.log(typeof add5);
+      console.log(add5);
+      console.log(add5(10));//it can get value of x in alreadystore in cache then get and process it 
+      
+      //realtime example 
+      function greet(name) {
+        setTimeout(function () {
+          console.log("Hello", name);//thi name i store lexical environment that is closure tthen 2 econd after it can be used
+        }, 2000);
+      }
+      
+      greet("Vel");
+
+
+      //in bank 
+      const bankAccount = (intialize)=> {
+        let balance = intialize;  // private
+
+        return {
+          deposit: function(amount) {
+            balance += amount;
+          },
+          withdraw(amount) {
+            balance -= amount; 
+          },
+          balance:()=>{
+            console.log(balance);
+            return balance;
+          }
+        };
+      };
+      const userAccount=bankAccount(500);
+      userAccount.balance();
+      userAccount.deposit(200); // 700
+      userAccount.balance();
+      userAccount.withdraw(100); 
+      userAccount.balance();// 600
+
+
+        /*|
+        |-- balance (private variable)
+        |
+        |-- deposit()  → uses balance
+        |-- withdraw() → uses balance
+        |-- balance()  → uses balance*/
+
+        //more detail check link:https://chatgpt.com/share/695dddb2-be18-800c-93e6-baa4bca950e6
+
+        function createATM(pin) {
+          let secretPin = pin;
+
+          return {
+            checkBalance: function () {
+              return "Balance checked using PIN: " + secretPin;
+            }
+          };
+        }
+        const myATM = createATM(1234);
+        console.log(myATM.checkBalance());
+
+
+
+    </script>
+  </body>
+</html>
