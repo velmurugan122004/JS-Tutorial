@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rock-Paper-Scissor Game</title>
+  <link rel="stylesheet" href="Version.10.2-rock-paper-scissor-update-eventListner-keyPress.css">
+</head>
+<body>
+  <div class="js-game-layout">
+
+      <div class="js-Game-content" >
+          <button class="js-theme" onclick="checkToggle();">Theme</button>
+
+          <p class="title">Rock Paper Scissor</p>
+          
+          <button class="move-button js-rock-button"><img class="move-icon" src="../pics/rock-paper-scissor/rock-emoji.png"></button>
+          <button class="move-button js-paper-button"><img class="move-icon" src="../pics/rock-paper-scissor/paper-emoji.png"></button>
+          
+          <button class="move-button js-scissor-button"><img class="move-icon" src="../pics/rock-paper-scissor/scissor-emoji.png"></button>
+
+          <p class="js-move"></p>
+
+          <p class="js-result result1"></p>
+
+          
+
+          <p class="updatedScore score"></p>
+          
+          <div class="reset-autoplay">
+              <button class="js-reset reset-score-button" >Reset Score 🔄</button>
+              <div class="js-reset-display"></div>
+              <button class="js-autoplay reset-score-button">Autoplay 🔄</button>
+              
+          </div>
+      </div>
+
+      <div class="js-instructions">
+            <h1>Instructions</h1>
+            <h3>Keyboard Controls</h3>
+            <ul>
+              <li><strong>R</strong> or <strong>r</strong> → Rock</li>
+              <li><strong>P</strong> or <strong>p</strong> → Paper</li>
+              <li><strong>S</strong> or <strong>s</strong> → Scissor</li>
+              <li><strong>A</strong> or <strong>a</strong> → Autoplay</li>
+              <li><strong>Spacebar</strong> → Stop Autoplay</li>
+              <li><strong>Backspace</strong> → Reset Score</li>
+            </ul>
+            <h3>Otherwise click and play</h3>
+      </div>
+  </div>
+
+
+
+  <script src="Version.10.1-rock-paper-scissor-update-eventListner-keyPress.js"> </script>
+</body>
+</html>

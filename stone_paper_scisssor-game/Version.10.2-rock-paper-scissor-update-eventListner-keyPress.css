@@ -1,0 +1,133 @@
+      body{
+      background-color:rgb(25,25,25);
+      color: white;
+      font-family: Arial;
+
+      transition: background-color 0.4s, color 0.4s;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;/* remove default margin */
+    }
+    .title{
+      display: flex;
+      align-items: center;/* center vertically */
+      justify-content: center;/* center horizontally */
+      font-size: 30px;
+      font-weight: bold;
+    }
+    /*game content*/
+    .js-game-layout
+    {
+      
+      display: flex;
+      align-items:center;
+      gap: 30px;
+      padding-top: 50px;
+    }
+    .js-game-content{
+      flex: 1;
+      
+    }
+    .move-icon{
+      height: 50px;
+    }
+    .js-move{
+      display: flex;
+      align-items: center;/* center vertically */
+      justify-content: center;/* center horizontally*/
+    }
+    .move-button{
+      background-color: transparent;
+      border: 3px solid white;
+      width: 120px;
+      height: 120px;
+      border-radius: 60px ;
+      margin-right: 10px;
+      cursor: pointer;
+      
+    }
+    .result1{
+      font-size: 25px;
+      font-weight: bold;
+  
+      display: flex;
+      align-items: center;/* center vertically */
+      justify-content: center;/* center horizontally*/
+    }
+    .score{
+      margin-top: 10px;
+      display: flex;
+      align-content: center;/* center vertically */
+      justify-content: center;/* center horizontally*/
+    }
+    .reset-score-button{
+      background-color: white;
+      border: none;
+      font-size: 15px;
+      padding: 8px 15px;
+      cursor: pointer;
+      
+    }
+    .js-yes,.js-no{
+      cursor: pointer;
+      border: none;
+      font-size: 15px;
+      padding: 8px 15px;
+      border-radius: 50px;
+      border: 3px solid white;
+    }
+    .is-toggled .js-yes{
+      border: 3px solid black;
+    }
+    .is-toggled .js-no{
+      border: 3px solid black;
+    }
+    .is-toggled {
+      background-color: #f2f2f2;
+      color: black;
+    }
+
+    .is-toggled .move-button {
+        border: 3px solid black;
+     }
+    .is-toggled .reset-score-button{
+        border: 3px solid black;
+     }
+
+    .js-theme{
+      position: fixed;
+      right: 20px;
+      top: 20px; 
+      padding: 5px 8px; 
+      border-radius: 20px;
+      border-color: black;
+      cursor: pointer;
+    }
+    .js-autoplay{
+      margin-left: 10px;
+      
+    }
+    .reset-autoplay{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    /*Instruction*/
+    .js-instructions{
+      font-family: Arial;
+      padding: 15px;
+      margin: 15px;
+      border-radius: 10px;
+      border: 3px solid #ccc;
+      width: 250px;
+    }
+    .js-instructions ul{
+      padding-left: 20px;
+      line-height: 1.6;
+    }
+    .is-toggled .js-instructions{
+      border: 3px solid black;
+    }
