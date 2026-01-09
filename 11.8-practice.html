@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Advanced function practice</title>
+  </head>
+  <body>
+    <button class="js-add-notification" style="color: black;background-color: lightgreen;">Add</button>
+    <button class="js-stop-notification" style="color: white;background-color: red;">Stop</button>
+    <p>Click to Rock-Paper-Scissor Game </p>
+    <p class="js-butt"></p>
+    
+    <script>
+
+      //12j 12k
+      const fun= (value1,value2)=>value1*value2;
+
+      console.log(fun(5));//two paramter assign but one give mean NaaN occur 
+
+      console.log(fun(5,5));
+      console.log(fun(7,10));
+
+      //12l
+      //const count=0; const variable doestn't add data
+      
+      const fun1=(array)=>{
+        let count=0;
+        array.forEach(element => {
+          if(element>0){
+            count++;
+          }
+        });
+        return count;
+      };
+
+      console.log(fun1([1,-3,5]));
+      console.log(fun1([-2,3,-5,7,10]));
+
+      //12m
+      const fun2=(array,num)=>{
+        /*const mapFunction=array.map((value)=>{
+          return value+num;
+        });
+        return mapFunction;*/
+        //shortand method
+        return array.map((value)=>value+num);
+      }
+
+      console.log(fun2([1,2,3],2));
+      console.log(fun2([-2,-1,0,99],2));
+
+      //12n
+      const removeWord=(array,word)=>{
+        return array.filter((value)=>{
+            if(value ===word)
+            {
+              return false;
+            }
+            else{
+              return true;
+            }
+        });
+      };
+
+      console.log(removeWord(['egg','apple','egg','egg','ham'],'egg'));
+
+      //12o
+      let count=0;
+      const removeFirstWord=(array,word)=>{
+        return array.filter((value)=>{
+          if(value===word){
+            count++;
+            return count>=3;
+          }
+          else{
+            return true;
+          }
+        });
+      };
+      console.log(removeFirstWord(['egg','apple','egg','egg','ham'],'egg'));
+
+      //12p 12q
+
+      document.querySelector('.js-add-notification').addEventListener('click',()=>{
+          displayNotification();
+          message++;
+      });
+
+      document.querySelector('.js-stop-notification').addEventListener('click',()=>{
+        if(message>0)
+        {
+          message--;
+        }
+        if(message==0){
+          stopNotification();
+        }
+      })
+      let message=1;
+      // Save the intervalId in case we need to cancel it.
+      let intervalId;
+      // We'll use this variable to keep track of whether
+      // or not we're displaying the notification.
+      let isDisplayingNotification;
+
+      // Start displaying the notification in the tab
+      // when the page first loads.
+      
+      const displayNotification=()=>{
+        // If we're already displaying the notification,
+        // stop this function because we don't want to
+        // create 2 intervals at the same time.
+        if(isDisplayingNotification){
+          return ;
+        }
+        isDisplayingNotification=true;
+        intervalId=setInterval(()=>{
+          if(document.title==='Advanced function practice'){
+            document.title=(`${message} New Message`);
+            
+          }
+          else{
+            document.title='Advanced function practice';
+          }
+        },1000);
+      };
+      //if user click sop notification mean stop
+      const stopNotification=()=>{
+          isDisplayingNotification=false;
+        clearInterval(intervalId);
+        document.title='Advanced function practice';
+      };
+      
+      /*Version.10.1-rock-paper-scissor-update-eventListner-keyPress.html all follow exercise are there
+      12r
+      12s
+      12t
+      12u now update (press-'a' autoplay)
+      12w mow update (press-'backspace' resetcore)
+      12x*/
+
+      /*these differenet ways of uing html element in script
+
+      const button=`<button class="js-buttoon">hello</button>`;
+
+      document.body.innerHTML += button;
+
+      
+       document.body.innerHTML+=`<button>hello</button>`;*/
+
+      const button1=document.querySelector(`.js-butt`);
+     
+      button1.innerHTML = `<button class='js-click'>Click</button>`;
+      document.querySelector('.js-click').addEventListener('click',()=>{
+        window.location.href ="stone_paper_scisssor-game/Version.10.0-rock-paper-scissor-update-eventListner-keyPress.html"
+
+      });
+
+      
+    </script>
+
+  </body>
+</html>
