@@ -70,6 +70,12 @@
       cursor: pointer;
       
     }
+    .js-yes{
+      background-color:rgb(225, 67, 67);
+    }
+    .js-no{
+      background-color:rgb(67, 225, 91);
+    }
     .js-yes,.js-no{
       cursor: pointer;
       border: none;
@@ -130,4 +136,20 @@
     }
     .is-toggled .js-instructions{
       border: 3px solid black;
+    }
+    /* This targets the container of just the Yes/No buttons */
+    .js-reset-display {
+      display: flex;
+      flex-direction:column; /* Stack the question above the buttons */
+      align-items: center;    /* Center horizontally */
+      justify-content: center;
+      margin-top: 5px;
+      gap: 10px;             /* Space between text and buttons */
+    }
+
+    /* This targets the container of just the Yes/No buttons */
+    .confirmation-buttons-container {
+      margin-bottom: 10px;
+      display: flex;
+      gap: 15px;             /* Space between Yes and No button */
     }

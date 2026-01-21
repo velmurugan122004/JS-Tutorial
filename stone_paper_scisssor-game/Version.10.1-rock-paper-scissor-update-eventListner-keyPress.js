@@ -77,6 +77,7 @@
       }
       else if(event.code==='Space')//doen,t have capitalor small letter
       {
+        event.preventDefault();//this i important because if user click autoplay in screen When you click a button (like "Autoplay") with your mouse, that button stays "focused." If you then press the Spacebar, the browser thinks you are trying to "click" that button again rather than triggering your keyboard shortcut.
         autoPlay.stop();
         
       }
@@ -86,26 +87,21 @@
     });
 
     //resetScore
-    function resetScore()
-    {
-      let resetButton=`<p>Are you sure you want reset score ?</p>
-      <button class='js-yes'>Yes</button> 
-      <button class='js-no'>No</button>`;
+    function closeResetPopup() {
+            // 1. Clear the Yes/No buttons from the screen
+           const display = document.querySelector('.js-reset-display');
+          if (display) {
+              display.innerHTML = "";
+          }
+          document.body.removeEventListener('keydown', handleResetKey);
 
-      document.querySelector('.js-reset-display').innerHTML=resetButton;
+          // 2. NEW: Find the extra instructions and remove them!
+          const tempHints = document.querySelectorAll('.js-temp-hint');
+          tempHints.forEach((hint) => {
+            hint.remove();
 
-      const yes=document.querySelector('.js-yes');
-      const no=document.querySelector('.js-no');
-      
-      // ---------- YES BUTTON CLICK ----------
-      yes.addEventListener('click', confirmReset);
-
-      // ---------- NO BUTTON CLICK ----------
-      no.addEventListener('click', cancelReset);
-
-      // ---------- KEYBOARD Y/N SUPPORT ----------
-      document.body.addEventListener('keydown', handleResetKey);
-
+          });
+      }
       function handleResetKey(event){
         if(event.key==='y' || event.key==='Y')
         {
@@ -134,16 +130,45 @@
       }
 
       // ---------- Remove popup + remove key listener ----------
-      function closeResetPopup() {
-           document.querySelector('.js-reset-display').innerHTML = "";
-           document.body.removeEventListener('keydown', handleResetKey);
+    function resetScore()
+    {
+      const instructionList = document.querySelector('.js-instruction-list');
+      let resetButton=`<p>Are you sure you want reset score ?</p>
+      <div class="confirmation-buttons-container">
+          <button class='js-yes'>Yes</button> 
+          <button class='js-no'>No</button>
+      </div>`;
+
+      // 2. Add the temporary instructions to the list
+      if (!document.querySelector('.js-temp-hint')){
+          const extraInstructions = `
+        <li class="js-temp-hint"><strong>Y</strong> or <strong>y</strong> → Confirm Reset</li>
+        <li class="js-temp-hint"><strong>N</strong> or <strong>n</strong> → Cancel Reset</li>`;
+        instructionList.insertAdjacentHTML('beforeend', extraInstructions);//add extra in that instruction by using insertAdjacenthtml
       }
-          
+      
+
+      document.querySelector('.js-reset-display').innerHTML=resetButton;
+
+      const yes=document.querySelector('.js-yes');
+      const no=document.querySelector('.js-no');
+      
+      // ---------- YES BUTTON CLICK ----------
+      yes.addEventListener('click', confirmReset);
+
+      // ---------- NO BUTTON CLICK ----------
+      no.addEventListener('click', cancelReset);
+
+      // ---------- KEYBOARD Y/N SUPPORT ----------
+      document.body.addEventListener('keydown', handleResetKey);
+
+      
     }
 
     //user playGame choicce
     function playGame (playerchoice)
     {     
+          closeResetPopup();//if user doesn't click yes/no dispaly disappear
           const computerMove=pickComputerMove();
           let result='';
           if(playerchoice==='Rock')
@@ -199,13 +224,13 @@
           {
             score.Ties+=1;
           }
+          localStorage.setItem('score',JSON.stringify(score));
           updateScore();
 
           document.querySelector('.js-result').innerHTML=result;
 
           document.querySelector('.js-move').innerHTML=`You <img class="move-icon" src="../pics/rock-paper-scissor/${playerchoice}-emoji.png">
   <img class="move-icon" src="../pics/rock-paper-scissor/${computerMove}-emoji.png"> Computer` 
-          localStorage.setItem('score',JSON.stringify(score));
           
     }
 
@@ -221,6 +246,8 @@
     /* const check=document.querySelector('.js-toggle');
       check.classList.toggle('is-toggled');*/
 
+      closeResetPopup();//if user doesn't click yes/no dispaly disappear
+
       document.body.classList.toggle('is-toggled');
     }
 
@@ -232,7 +259,7 @@
     {
       
         start(){
-
+          
           if(!iAutoPlaying)
           {
               intervalId=setInterval(function(){
