@@ -1,5 +1,6 @@
 
 let productsHTML='';
+//document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;  instead using amazon.html 48 inside data  
 
 products.forEach((product)=>{
     productsHTML+=`
@@ -25,7 +26,7 @@ products.forEach((product)=>{
             $${(product.priceCents/100).toFixed(2)}
           </div>
 
-          <div class="product-quantity-container">
+          <div class="product-quantity-container js-user-select-quantity">
             <select>
               <option selected value="1">1</option>
               <option value="2">2</option>
@@ -74,6 +75,10 @@ document.querySelectorAll('.js-to-add-cart')
         });
 
         //if already there means increase cart quantity
+
+        //use
+
+        
         if(matchingItem){
           matchingItem.quantity+=1;
         }
@@ -84,7 +89,14 @@ document.querySelectorAll('.js-to-add-cart')
         });
         }
 
+        let cartQuantity=0;
         
-        console.log(cart);
+        cart.forEach((item)=>{
+          cartQuantity+=item.quantity;
+        });
+        
+        //console.log(cartQuantity);
+        //console.log(cart);
+        document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
       });
 });
