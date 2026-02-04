@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js';
+import {products} from '../data/products.js'
 //const cart=[]; it take can error because cart is already create ome script folder it can be solve with hemp of{modules}
 
 /*Modules:
