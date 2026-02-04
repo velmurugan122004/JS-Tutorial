@@ -14,6 +14,54 @@ const products = [
       "apparel"
     ]
   },
+  
+  {
+    id: "e43638ce-6aa0-4b85-b27f-e1d07eb68452",
+    image: "images/products/Sliver-1litre-oil-bottle.jpg",
+    name: "Oil Dispenser 1 Litre Steel - Stainless Steel Oil Bottle for Kitchen - Cooking oil Container/Pourer - Leakproof & Long Lasting (1 Ltr, Silver)",
+    rating: {
+      stars: 3.5,
+      count: 93
+    },
+    priceCents: 399,
+    keywords: [
+      "oildipenser",
+      "steel oil bottle",
+      "stainless"
+    ]
+  },
+  {
+    id: "e43638ce-6aa0-4b85-b27f-ijid698n7",
+    image: "images/products/clay pot 1.jpg",
+    name: "Terracotta Clay Pot with Lid for curd, yogurt bowl | Mitti Dahi Handi, Earthenware, Brown (300ML)",
+    rating: {
+      stars: 3.5,
+      count: 369
+    },
+    priceCents: 500,
+    keywords: [
+      "Clay pot",
+      "small curry pot",
+      "clay vessel"
+    ]
+  },
+  {
+    id: "hcb6738ce-6aa0-4b85-b27f-e1d07eb68254",
+    image: "images/products/Tableset.jpg",
+    name: "Seating Chair and Table Set Outdoor Balcony Garden Coffee Table Set Furniture and 2 Chairs 1 Table Set ",
+    rating: {
+      stars: 5.0,
+      count: 197
+    },
+    priceCents: 14999,
+    keywords: [
+      "Table set",
+      "coffee table",
+      "seating chair",
+      "chair"
+    ]
+  },
+
   {
     id: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
     image: "images/products/intermediate-composite-basketball.jpg",
