@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart,addToCart} from '../data/cart.js';
 import {products} from '../data/products.js'
 //const cart=[]; it take can error because cart is already create ome script folder it can be solve with hemp of{modules}
 
@@ -73,6 +73,19 @@ document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
 const addedMessageTimeouts = {};
 
+function updateCartQuantity()
+{
+      let cartQuantity=0;
+        
+      cart.forEach((cartItem)=>{
+        cartQuantity+=cartItem.quantity;
+      });
+         
+      console.log(cartQuantity);
+        //console.log(cart);
+      document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+} 
+
 document.querySelectorAll('.js-to-add-cart')
     .forEach((button)=>{
       button.addEventListener('click',()=>{
@@ -85,44 +98,9 @@ document.querySelectorAll('.js-to-add-cart')
         //intead use below destructing 
         const {productId}=button.dataset;
 
-        //checking item in cart
-        let matchingItem;
-        cart.forEach((item)=>{
-          if(productId===item.productId)
-          {
-            matchingItem=item;
-          }
-        });
+        addToCart(productId);
 
-        //if already there means increase cart quantity
-
-        //use dom to get user select quantity
-
-        const userQuantity=document.querySelector(`.js-user-select-quantity-${productId}`);
-
-        console.log(userQuantity.value);
-        const quantity=Number(userQuantity.value);
-        
-        
-        if(matchingItem){
-          matchingItem.quantity+=quantity;
-        }
-        else{
-          cart.push({
-          productId:productId,
-          quantity:quantity
-        });
-        }
-
-        let cartQuantity=0;
-        
-        cart.forEach((item)=>{
-          cartQuantity+=item.quantity;
-        });
-         
-        console.log(cartQuantity);
-        //console.log(cart);
-        document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+        updateCartQuantity();
 
 
         const addedMessage = document.querySelector(
