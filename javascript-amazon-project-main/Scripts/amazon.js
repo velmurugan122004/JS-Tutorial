@@ -1,5 +1,16 @@
+import {cart} from '../data/cart.js';
+//const cart=[]; it take can error because cart is already create ome script folder it can be solve with hemp of{modules}
+
+/*Modules:
+  step1:add type="module" attribute   line:amazon.html(63)
+  step2:export that Modules  line:cart.js(1)
+  step3:import that modules  line:amazon.js(1)
+  
+  avoid naming conflict
+*/
 
 let productsHTML='';
+
 //document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;  instead using amazon.html 48 inside data  
 
 products.forEach((product)=>{
