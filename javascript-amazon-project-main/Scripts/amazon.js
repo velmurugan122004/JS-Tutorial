@@ -1,4 +1,4 @@
-import {cart,addToCart} from '../data/cart.js';
+import {cart,addToCart,calculateCartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from './utills/money.js';
 //const cart=[]; it take can error because cart is already create ome script folder it can be solve with hemp of{modules}
@@ -67,6 +67,7 @@ products.forEach((product)=>{
           </button>
         </div>
     `;
+    pageUpdateCartQuantity();
 });
 //console.log(productsHTML);
 
@@ -74,18 +75,17 @@ document.querySelector('.js-products-grid').innerHTML=productsHTML;
 
 const addedMessageTimeouts = {};
 
-function updateCartQuantity()
+//update cart quantity
+function pageUpdateCartQuantity()
 {
-      let cartQuantity=0;
-        
-      cart.forEach((cartItem)=>{
-        cartQuantity+=cartItem.quantity;
-      });
-         
-      console.log(cartQuantity);
-        //console.log(cart);
-      document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
-} 
+  const cartQuantity=calculateCartQuantity();
+  if(cartQuantity!==0)
+  {
+    document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
+  }else{
+    document.querySelector('.js-cart-quantity').innerHTML='';
+  }
+}
 
 document.querySelectorAll('.js-to-add-cart')
     .forEach((button)=>{
@@ -101,7 +101,8 @@ document.querySelectorAll('.js-to-add-cart')
 
         addToCart(productId);
 
-        updateCartQuantity();
+        calculateCartQuantity();
+        pageUpdateCartQuantity();
 
 
         const addedMessage = document.querySelector(
