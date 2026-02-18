@@ -13,7 +13,8 @@ import { formatCurrency } from './utills/money.js';
 
 let productsHTML='';
 
-//document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;  instead using amazon.html 48 inside data  
+//intead thi below line used of using function pageUpdateCartQuantity();
+//document.querySelector('.js-cart-quantity').innerHTML=calculateCartQuantity();  instead using amazon.html 48 inside data  
 
 products.forEach((product)=>{
     productsHTML+=`
@@ -87,6 +88,7 @@ function pageUpdateCartQuantity()
   }
 }
 
+//only display 2 second added in after added to cart 
 document.querySelectorAll('.js-to-add-cart')
     .forEach((button)=>{
       button.addEventListener('click',()=>{
@@ -101,7 +103,7 @@ document.querySelectorAll('.js-to-add-cart')
 
         addToCart(productId);
 
-        calculateCartQuantity();
+        //calculateCartQuantity();
         pageUpdateCartQuantity();
 
 
@@ -111,7 +113,7 @@ document.querySelectorAll('.js-to-add-cart')
 
         addedMessage.classList.add('added-to-cart-visible');
 
-        console.log(addedMessage);
+        //console.log(addedMessage); console display code of display added that code  
 
   
         
@@ -135,3 +137,4 @@ document.querySelectorAll('.js-to-add-cart')
       addedMessageTimeoutId= timeoutId;
       });
 });
+pageUpdateCartQuantity();

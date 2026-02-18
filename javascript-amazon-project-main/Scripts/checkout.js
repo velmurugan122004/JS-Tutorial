@@ -1,4 +1,4 @@
-import {cart,removeProduct,calculateCartQuantity,updateCartQuantity,UpdateDeliveryOption} from '../data/cart.js';
+import {cart,removeProduct,calculateCartQuantity,updateCartQuantity,UpdateDeliveryOption,saveStorage} from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency ,calculateTotalCost, beforeTotal, taxCalculate, totalPrice} from './utills/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
@@ -20,7 +20,7 @@ function orderSummary()
     function pageUpdateCartQuantity()//HEADER OF CHECKOUT CURRENT UPDATED CART
     {
       const cartQuantity=calculateCartQuantity();
-      if(cartQuantity===1 || cartQuantity===0)
+      if(cartQuantity<=1)
       {
         document.querySelector('.js-current-UpdateQuantity').innerHTML=`${cartQuantity} Item`;
       }
@@ -87,7 +87,7 @@ function orderSummary()
                         Quantity: <span class="quantity-label">${cartItem.quantity}</span>  <!--GET CART PRODUCT QUANTITY USING cartItem.quantity -->
                       </span>
 
-                      <span class="update-quantity-link link-primary js-update-cart" data-product-id="${matchingProduct.id}">
+                      <span class="update-quantity-link link-primary js-update-cart js-update-cart-${matchingProduct.id}" data-product-id="${matchingProduct.id}">
                         Update
                       </span> <!--UPDATE CART QUANTITY IN CHECKOUT PAGE AND CART.JS-->
 
@@ -103,7 +103,7 @@ function orderSummary()
                     <div class="delivery-options-title">
                       Choose a delivery option:
                     </div>
-                    ${deliveryOptionHtml(matchingProduct,cartItem)}; 
+                    ${deliveryOptionHtml(matchingProduct,cartItem)}
                   </div>  <!--CALL deliveryOptionHtml() TO GET USER CHOOSE DELIVERY OPTION-->
                 </div>
               </div>
@@ -170,36 +170,46 @@ function orderSummary()
             pageUpdateCartQuantity();
         });
     });
+
+    //CODE FOR UPDATE CART IN CHECKOUT PAGE
     document.querySelectorAll('.js-update-cart').forEach((linkItem)=>{
       linkItem.addEventListener('click',()=>{
           //console.log("updated ");
-          document.querySelector('.js-update-cart').innerHTML='';
+          
+          //disapper of update button
+          linkItem.style.display = 'none';
+
           const productId=linkItem.dataset.productId;
           //console.log(productId);
+
           const container = document.querySelector(
           `.js-cart-item-container-${productId}`
           );
 
           container.classList.add('is-editing');
           //console.log(container);
+          
           const quantityLabel = container.querySelector('.quantity-label');
         
           //console.log(quantityLabel);
           const currentQuantity = quantityLabel.innerText;
           //console.log(currentQuantity);
           quantityLabel.innerHTML = `
-            <input type="number" 
-              class="js-quantity-input"
-              value="${currentQuantity}" 
-              min="1" max="10">
-            <button class="js-save-button">Save</button>
+            <span>
+                
+                <input type="number" 
+                  class="js-quantity-input"
+                  value="${currentQuantity}" 
+                  min="1" max="50">
+                <button class="js-save-button">Save</button>
+            </span>
           `;
-          document.querySelector('.js-save-button').addEventListener('click',()=>{
+          //SAVE BUTTON LOGIC
+          container.querySelector('.js-save-button').addEventListener('click',()=>{
               const newQuantity = container.querySelector('.js-quantity-input').value;
               
             // console.log(newQuantity);
-              updateCartQuantity(newQuantity,productId)//UPDATE CART QUANTITY IN cart.js
-              quantityLabel.innerHTML=newQuantity;
+              updateCartQuantity(newQuantity,productId);//UPDATE CART QUANTITY IN cart.js
 
               pageUpdateCartQuantity();//UPDATE CHECKOUT PAGE IN Checkout(Cartitem)
               orderSummary();//UPDATE OF ORDER SUMMARY UPDATE CART ITEM LIST COUNT
@@ -269,12 +279,20 @@ function orderSummary()
             <div class="payment-summary-money">$${total}</div>
           </div>
 
-          <button class="place-order-button button-primary">
-            Place your order
-          </button>
+          <a href="orders.html">
+              <button class="place-order-button button-primary js-payment-order-placed">
+                Place your order
+              </button>
+          </a>
         </div>
         `;
     document.querySelector('.js-payment-summary').innerHTML=paymentSummary;
+
+    /*const orderPlaced=document.querySelector('.js-payment-order-placed');
+
+    orderPlaced.addEventListener('click',()=>{
+        window.location.href = 'orders.html';
+    });*/
 }
 
 orderSummary();
