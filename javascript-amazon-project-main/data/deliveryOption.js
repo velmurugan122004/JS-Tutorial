@@ -31,3 +31,14 @@ export function userDeliveryOptionPrice()
     });
     return price;
 }
+
+export function getDeliveryOption(deliveryOptionId){
+  let deliveryOptions;//GET ALL DELIVERY OPTION OBJECT DATA LIKE OF ID,PRICECENTS,DELIVERYDAYS
+
+        deliveryOption.forEach((option)=>{
+          if(option.id===deliveryOptionId){
+            deliveryOptions=option;
+          }
+        });
+  return deliveryOptions ||deliveryOptions[0];
+}
