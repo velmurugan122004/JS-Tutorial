@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JUST PRACTICE</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/dayjs@1/dayjs.min.js"></script>
+    <!--<script src="./Scripts-folder/15.0-isWeekend.js"></script> instead of using line 10-->
+    <script type="module">
+      import isSatSun from "./Scripts-folder/15.0-isWeekend.js";
+      console.log('hello');
+
+      const today=dayjs();
+      console.log(today);
+      console.log((today).format('YYYY, MMMM D'));
+      //15a 
+      console.log((today.add(5,'days')).format('MMMM D'));
+
+      //15b
+      console.log(today.add(1,'month').format('MMMM D'));
+
+      //15C
+      console.log(today.subtract(1,'month').format('MMMM D'));
+
+      //15d
+      console.log(today.format('dddd'));
+
+      //15e
+      function isWeekend(today)
+      {
+        const day=today.format('dddd');
+        return day==='Saturday' || day==='Sunday';
+      }
+
+      console.log(isWeekend(today));
+
+      //15e+15g
+      console.log(isSatSun(today));
+    </script>
+  </body>
+</html>
