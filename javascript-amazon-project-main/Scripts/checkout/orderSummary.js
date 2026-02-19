@@ -7,12 +7,6 @@ import { deliveryOption, userDeliveryOptionPrice,getDeliveryOption } from '../..
 import { renderPaymentSummary } from './paymentSummary.js';
 
 
-/*console.log(dayjs());
-const today=dayjs();
-
-console.log(today.add(7,'days'));
-const deliveryDate=today.add(7,'days');
-console.log(deliveryDate.format('dddd, MMMM D'));*/
 export function orderSummary()
 { 
         
@@ -215,10 +209,12 @@ export function orderSummary()
             const {productId,deliveryOptionId}=element.dataset;//GET DATA OF PRODUCTID AND USERSELECT DELIVERY OPTION
             UpdateDeliveryOption(productId,deliveryOptionId);//UPDATE DELIVERY OPTION IN cart.js
             orderSummary();//REFRESH UPDATE 
+
+            renderPaymentSummary();
         });
     });
 
-    renderPaymentSummary();
+    
     
 }
 
