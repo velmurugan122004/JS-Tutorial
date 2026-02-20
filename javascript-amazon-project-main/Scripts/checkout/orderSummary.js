@@ -1,29 +1,22 @@
 import {cart,removeProduct,calculateCartQuantity,updateCartQuantity,UpdateDeliveryOption,saveStorage} from '../../data/cart.js';
 import { products ,getProduct} from '../../data/products.js';
+
 import { formatCurrency } from '../utills/money.js';
+
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 import { deliveryOption, userDeliveryOptionPrice,getDeliveryOption } from '../../data/deliveryOption.js';
+
 import { renderPaymentSummary } from './paymentSummary.js';
 
+import { pageUpdateCartQuantity } from './checkoutHeader.js';
 
 export function orderSummary()
 { 
         
     pageUpdateCartQuantity();//HEADER OF CHECKOUT CURRENT UPDATED CART
 
-    function pageUpdateCartQuantity()//HEADER OF CHECKOUT CURRENT UPDATED CART
-    {
-      const cartQuantity=calculateCartQuantity();
-      if(cartQuantity<=1)
-      {
-        document.querySelector('.js-current-UpdateQuantity').innerHTML=`${cartQuantity} Item`;
-      }
-      else{
-        document.querySelector('.js-current-UpdateQuantity').innerHTML=`${cartQuantity} Items`;
-      }
-      
-    }
+    
 
     //CART DETAILS
 
@@ -149,9 +142,9 @@ export function orderSummary()
             const productId=link.dataset.productId;
             //console.log(productId);
             removeProduct(productId) ;//?
-            //console.log(cart);
-            const container=document.querySelector(`.js-cart-item-container-${productId}`);
-            container.remove();//?
+            //const container=document.querySelector(`.js-cart-item-container-${productId}`);
+            //container.remove();//intead of using below code 
+            orderSummary();
             pageUpdateCartQuantity();
             renderPaymentSummary();
         });
@@ -198,6 +191,9 @@ export function orderSummary()
               updateCartQuantity(newQuantity,productId);//UPDATE CART QUANTITY IN cart.js
 
               pageUpdateCartQuantity();//UPDATE CHECKOUT PAGE IN Checkout(Cartitem)
+
+              renderPaymentSummary();//update payment page
+
               orderSummary();//UPDATE OF ORDER SUMMARY UPDATE CART ITEM LIST COUNT
           });
       });
