@@ -3,9 +3,9 @@ import { products ,getProduct} from '../../data/products.js';
 
 import { formatCurrency } from '../utills/money.js';
 
-import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
-import { deliveryOption, userDeliveryOptionPrice,getDeliveryOption } from '../../data/deliveryOption.js';
+
+import { deliveryOption, userDeliveryOptionPrice,getDeliveryOption,CalculateDeliveryDate } from '../../data/deliveryOption.js';
 
 import { renderPaymentSummary } from './paymentSummary.js';
 
@@ -33,14 +33,8 @@ export function orderSummary()
 
         const deliveryOptions=getDeliveryOption(deliveryOptionId);
 
-        const today=dayjs();//GET DATA OF ALL DATA,TIME,MINUTES,ETC..
-        const deliveryDate=today.add(
-          deliveryOptions.deliveryDays,'days'
-        );//ADD DELVIERY DAYS BASED ON USER SELECT  
-
-        const dateString=deliveryDate.format('dddd, MMMM D'); //GET DATE IN STRING FORMAT LIKE (Saturday, February 14)
-
-        //CART ADDED PRODUCT DETAILS
+        
+        const dateString=CalculateDeliveryDate(deliveryOptions);//get delivery date based on user select delivery option 
         cartSummary+=`
           <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
                 <div class="delivery-date">
@@ -95,11 +89,8 @@ export function orderSummary()
       let deliveryHtml='';//EMPTY HTML CREATE 
       deliveryOption.forEach((deliveryOption)=>{
 
-          const today=dayjs();
-          const deliveryDate=today.add(
-          deliveryOption.deliveryDays,'days'
-          );
-          const dateString=deliveryDate.format('dddd, MMMM D');
+          
+          const dateString=CalculateDeliveryDate(deliveryOption);
 
           const PriceString=deliveryOption.priceCents===0?'FREE':`$${formatCurrency(deliveryOption.priceCents)} `;//GET DELIVERY OPTION PRICE UPDATE DELIVERY OPTION IN CHECKOUT PAGE 
 

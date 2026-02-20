@@ -1,4 +1,5 @@
 import { cart } from "./cart.js";
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 export const deliveryOption=[{
   id:'1',
   deliveryDays:7,
@@ -41,4 +42,12 @@ export function getDeliveryOption(deliveryOptionId){
           }
         });
   return deliveryOptions ||deliveryOptions[0];
+}
+
+export function CalculateDeliveryDate(deliveryOption)
+{
+  const today=dayjs();//GET DATA OF ALL DATA,TIME,MINUTES,ETC..
+  const deliveryDate=today.add(deliveryOption.deliveryDays,'days');//ADD DELVIERY DAYS BASED ON USER SELECT  
+  const dateString=deliveryDate.format('dddd ,MMMM D');//GET DATE IN STRING FORMAT LIKE (Saturday, February 14)
+  return dateString;
 }
