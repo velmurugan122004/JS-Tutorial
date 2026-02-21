@@ -46,8 +46,25 @@ export function getDeliveryOption(deliveryOptionId){
 
 export function CalculateDeliveryDate(deliveryOption)
 {
-  const today=dayjs();//GET DATA OF ALL DATA,TIME,MINUTES,ETC..
-  const deliveryDate=today.add(deliveryOption.deliveryDays,'days');//ADD DELVIERY DAYS BASED ON USER SELECT  
+  let deliveryDate=dayjs();//GET DATA OF ALL DATA,TIME,MINUTES,ETC..
+
+  let remaingDays=deliveryOption.deliveryDays;//GET UER SELECT DELIVERY OPTION
+
+  while (remaingDays>0) {
+    deliveryDate=deliveryDate.add(1,'day');
+    if(!isWeekend(deliveryDate))
+    {
+      remaingDays--;//if not weekend doesn,t add 1 delivery day extro else add
+      //(user order=thursday choose delivery in 3 days  mean saturday is weekend so add one more day and check if it is weekendd means same process)
+    }
+  }
+
+  
   const dateString=deliveryDate.format('dddd ,MMMM D');//GET DATE IN STRING FORMAT LIKE (Saturday, February 14)
   return dateString;
+}
+function isWeekend(date)
+{
+  const dayOfWeek=date.format('dddd');
+  return dayOfWeek==='Saturday' || dayOfWeek==='Sunday';
 }
