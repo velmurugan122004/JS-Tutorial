@@ -19,7 +19,7 @@ else{
 }
 
 //Edge case
-console.log('With zero');
+console.log('Works with zero');
 if(formatCurrency(0)==='0.00')
 {
   console.log('passed');
