@@ -68,11 +68,12 @@ products.forEach((product)=>{
           </button>
         </div>
     `;
-    pageUpdateCartQuantity();
+    
 });
 //console.log(productsHTML);
 
 document.querySelector('.js-products-grid').innerHTML=productsHTML;
+pageUpdateCartQuantity();
 
 const addedMessageTimeouts = {};
 
@@ -101,7 +102,12 @@ document.querySelectorAll('.js-to-add-cart')
         //intead use below destructing 
         const {productId}=button.dataset;
 
-        addToCart(productId);
+        const userQuantity=document.querySelector(`.js-user-select-quantity-${productId}`);
+
+        //console.log(userQuantity.value);
+        const userSelectValue=Number(userQuantity.value);
+        
+        addToCart(productId,userSelectValue);
 
         //calculateCartQuantity();
         pageUpdateCartQuantity();
