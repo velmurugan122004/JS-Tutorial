@@ -1,15 +1,15 @@
 class Cart{
   cartItems;// this form to add properties
 
-  localStorageKey;
+  #localStorageKey;//it means private key
 
   constructor(localStorageKey){
-    this.localStorageKey=localStorageKey;
-    this.loadFromStorage();
+    this.#localStorageKey=localStorageKey;
+    this.#loadFromStorage();//priavte variable
   }
 
-  loadFromStorage(){
-    this.cartItems =JSON.parse(localStorage.getItem(this.localStorageKey));
+  #loadFromStorage(){//private method
+    this.cartItems =JSON.parse(localStorage.getItem(this.#localStorageKey));
 
     if(!this.cartItems){
       this.cartItems=[{
@@ -114,6 +114,8 @@ class Cart{
 
 const cart=new Cart('cart-oop');
 console.log(cart);
+
+//cart.#localStorageKey='aaa';  it take error (localstorageKey is private)
 
 const businessCart=new Cart('cart-business');
 console.log(businessCart);
