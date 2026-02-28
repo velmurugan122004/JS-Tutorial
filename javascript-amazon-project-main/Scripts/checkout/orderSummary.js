@@ -36,7 +36,7 @@ export function orderSummary()
         
         const dateString=CalculateDeliveryDate(deliveryOptions);//get delivery date based on user select delivery option 
         cartSummary+=`
-          <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+          <div class="cart-item-container js-cart-item-container js-cart-item-container-${matchingProduct.id}">
                 <div class="delivery-date">
                   Delivery date:${dateString} <!--UPDATED USER SELECT DELIVERY OPTION -->
                 </div>
