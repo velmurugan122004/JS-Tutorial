@@ -51,7 +51,7 @@ export function orderSummary()
                     </div>  <!--GET PRODUCT NAME USING matchingProduct -->
 
                     <div class="product-price">
-                      $${formatCurrency(matchingProduct.priceCents)}
+                      ${matchingProduct.getPrice()}
                     </div>  <!--GET PRODUCT PRICE USING matchingProduct -->
 
                     <div class="product-quantity">
