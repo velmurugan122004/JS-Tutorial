@@ -49,8 +49,35 @@ class Clothing extends Product{
     `;
   }
 }
+/*
+const date=new Date();
+console.log(date);
+console.log(date.toLocaleString());
+*/
 
+/*
+console.log(this);
 
+const obj={
+  a:2,
+  b:this.a
+}; because outside function this is undefined
+*/
+/*
+function logThis(num1,num2){
+  console.log(`${this}-(${num1}+${num2}) =`,num1+num2);
+}
+logThis();//undefined 
+logThis.call('Adding Two Number ',10,10);//this i say which is call this that assign string
+
+//Arrow function do not change the value of "this"
+const obj1={
+  method1:()=>{
+    console.log(this);
+  }
+}
+obj1.method1();//undefined because in te arrow function this can be ouide of the this refer (outside of this is undefined like line:59)
+*/
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
