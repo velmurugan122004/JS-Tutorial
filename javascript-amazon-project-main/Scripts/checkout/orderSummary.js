@@ -1,4 +1,4 @@
-import {cart,removeProduct,calculateCartQuantity,updateCartQuantity,UpdateDeliveryOption,saveStorage} from '../../data/cart.js';
+import {cart}from '../../data/cart-class.js';
 import { products ,getProduct} from '../../data/products.js';
 
 import { formatCurrency } from '../utills/money.js';
@@ -21,7 +21,7 @@ export function orderSummary()
     //CART DETAILS
 
     let cartSummary='';
-    cart.forEach((cartItem)=>{
+    cart.cartItems.forEach((cartItem)=>{
         const productId=cartItem.productId;
 
         const matchingProduct=getProduct(productId);
@@ -132,7 +132,7 @@ export function orderSummary()
         link.addEventListener('click',()=>{
             const productId=link.dataset.productId;
             //console.log(productId);
-            removeProduct(productId) ;//?
+            cart.removeProduct(productId) ;//?
             //const container=document.querySelector(`.js-cart-item-container-${productId}`);
             //container.remove();//intead of using below code 
             orderSummary();
@@ -179,7 +179,7 @@ export function orderSummary()
               const newQuantity = container.querySelector('.js-quantity-input').value;
               
             // console.log(newQuantity);
-              updateCartQuantity(newQuantity,productId);//UPDATE CART QUANTITY IN cart.js
+              cart.updateCartQuantity(newQuantity,productId);//UPDATE CART QUANTITY IN cart.js
 
               pageUpdateCartQuantity();//UPDATE CHECKOUT PAGE IN Checkout(Cartitem)
 
@@ -194,7 +194,7 @@ export function orderSummary()
     document.querySelectorAll('.js-delivery-option').forEach((element)=>{
         element.addEventListener('click',()=>{
             const {productId,deliveryOptionId}=element.dataset;//GET DATA OF PRODUCTID AND USERSELECT DELIVERY OPTION
-            UpdateDeliveryOption(productId,deliveryOptionId);//UPDATE DELIVERY OPTION IN cart.js
+            cart.UpdateDeliveryOption(productId,deliveryOptionId);//UPDATE DELIVERY OPTION IN cart.js
             orderSummary();//REFRESH UPDATE 
 
             renderPaymentSummary();

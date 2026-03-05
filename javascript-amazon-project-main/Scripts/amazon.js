@@ -1,4 +1,4 @@
-import {cart,addToCart,calculateCartQuantity} from '../data/cart.js';
+import {cart} from '../data/cart-class.js';
 import {products} from '../data/products.js';
 import { formatCurrency } from './utills/money.js';
 //const cart=[]; it take can error because cart is already create ome script folder it can be solve with hemp of{modules}
@@ -82,7 +82,7 @@ const addedMessageTimeouts = {};
 //update cart quantity
 function pageUpdateCartQuantity()
 {
-  const cartQuantity=calculateCartQuantity();
+  const cartQuantity=cart.calculateCartQuantity();
   if(cartQuantity!==0)
   {
     document.querySelector('.js-cart-quantity').innerHTML=cartQuantity;
@@ -109,7 +109,7 @@ document.querySelectorAll('.js-to-add-cart')
         //console.log(userQuantity.value);
         const userSelectValue=Number(userQuantity.value);
         
-        addToCart(productId,userSelectValue);
+        cart.addToCart(productId,userSelectValue);
 
         //calculateCartQuantity();
         pageUpdateCartQuantity();

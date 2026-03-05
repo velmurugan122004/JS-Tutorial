@@ -112,7 +112,7 @@ class Cart{
 
 
 
-const cart=new Cart('cart-oop');
+export const cart=new Cart('cart-oop');
 console.log(cart);
 
 //cart.#localStorageKey='aaa';  it take error (localstorageKey is private)
