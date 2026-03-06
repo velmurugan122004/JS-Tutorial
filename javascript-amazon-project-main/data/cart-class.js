@@ -113,11 +113,11 @@ class Cart{
 
 
 export const cart=new Cart('cart-oop');
-console.log(cart);
+//console.log(cart);
 
 //cart.#localStorageKey='aaa';  it take error (localstorageKey is private)
 
 const businessCart=new Cart('cart-business');
-console.log(businessCart);
+//console.log(businessCart);
 
-console.log(businessCart instanceof Cart);//it can check class instance of businessCart
+//console.log(businessCart instanceof Cart);//it can check class instance of businessCart
