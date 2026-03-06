@@ -17,16 +17,17 @@ class Cart{
         quantity:2,
         deliveryOptionId:'1'
       },{
-        productId:'e43638ce-6aa0-4b85-b27f-e1d07eb68452', 
+        productId:'83d4ca15-0f35-48f5-b7a3-1ea210004f2e', 
         quantity:1,
         deliveryOptionId:'2'
       }];
+      //this.cartItems=[];
     }
   };
 
   saveStorage()
   {
-    localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
   };
 
   addToCart(productId,userQuantity){
