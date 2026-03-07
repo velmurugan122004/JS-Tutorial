@@ -115,7 +115,9 @@ class Cart{
 
 export const cart=new Cart('cart-oop');
 //console.log(cart);
-
+export function loadFromStorage() {
+  cart.cartItems = JSON.parse(localStorage.getItem('cart-oop')) || [];
+}
 //cart.#localStorageKey='aaa';  it take error (localstorageKey is private)
 
 const businessCart=new Cart('cart-business');

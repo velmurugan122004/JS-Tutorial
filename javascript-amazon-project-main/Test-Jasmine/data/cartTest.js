@@ -29,8 +29,8 @@ describe('test suite: addToCart', () => {
     spyOn(localStorage, 'getItem').and.callFake(() => {
       return JSON.stringify([]);
     });
-
-    // 3. Re-run the storage loader to apply the mock
+    console.log(localStorage.getItem('cart')); //empty array return 
+     // 3. Re-run the storage loader to apply the mock
     loadFromStorage();
 
     // 4. Add the product

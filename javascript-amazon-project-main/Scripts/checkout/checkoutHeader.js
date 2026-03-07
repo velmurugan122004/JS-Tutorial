@@ -1,5 +1,4 @@
-import { calculateCartQuantity } from "../../data/cart.js";
-
+import {cart}from '../../data/cart-class.js';
 export function renderCheckoutHeader(){
   
   const checkoutHeaderHtml=`<div class="header-content">
@@ -23,14 +22,16 @@ export function renderCheckoutHeader(){
 }
 
 export function pageUpdateCartQuantity()//HEADER OF CHECKOUT CURRENT UPDATED CART
-    {
-      const cartQuantity=calculateCartQuantity();
+    { 
+      const element = document.querySelector('.js-current-UpdateQuantity');
+      if (!element) return;
+      const cartQuantity=cart.calculateCartQuantity();
       if(cartQuantity<=1)
       {
-        document.querySelector('.js-current-UpdateQuantity').innerHTML=`${cartQuantity} Item`;
+        element.innerHTML=`${cartQuantity} Item`;
       }
       else{
-        document.querySelector('.js-current-UpdateQuantity').innerHTML=`${cartQuantity} Items`;
+        element.innerHTML=`${cartQuantity} Items`;
       }
       
     }

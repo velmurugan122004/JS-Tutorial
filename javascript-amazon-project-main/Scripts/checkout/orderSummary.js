@@ -6,15 +6,14 @@ import { formatCurrency } from '../utills/money.js';
 
 
 import { deliveryOption, userDeliveryOptionPrice,getDeliveryOption,CalculateDeliveryDate } from '../../data/deliveryOption.js';
+import * as paymentSummary from './paymentSummary.js';
+import * as checkoutHeader from './checkoutHeader.js';
 
-import { renderPaymentSummary } from './paymentSummary.js';
-
-import { pageUpdateCartQuantity } from './checkoutHeader.js';
 
 export function orderSummary()
 { 
         
-    pageUpdateCartQuantity();//HEADER OF CHECKOUT CURRENT UPDATED CART
+    checkoutHeader.pageUpdateCartQuantity();//HEADER OF CHECKOUT CURRENT UPDATED CART
 
     
 
@@ -54,7 +53,7 @@ export function orderSummary()
                       ${matchingProduct.getPrice()}
                     </div>  <!--GET PRODUCT PRICE USING matchingProduct -->
 
-                    <div class="product-quantity">
+                    <div class="product-quantity js-product-quantity-${matchingProduct.id}">
                       <span>
                         Quantity: <span class="quantity-label">${cartItem.quantity}</span>  <!--GET CART PRODUCT QUANTITY USING cartItem.quantity -->
                       </span>
@@ -64,7 +63,7 @@ export function orderSummary()
                       </span> <!--UPDATE CART QUANTITY IN CHECKOUT PAGE AND CART.JS-->
 
 
-                      <span class="delete-quantity-link link-primary js-delete-cart" data-product-id="${matchingProduct.id}">
+                      <span class="delete-quantity-link link-primary js-delete-cart js-delete-link-${matchingProduct.id}" data-product-id="${matchingProduct.id}">
                         Delete
                       </span> <!--DELETE CART QUANTITY  IN CHECKOUT PAGE AND CART.JS-->
 
@@ -136,8 +135,8 @@ export function orderSummary()
             //const container=document.querySelector(`.js-cart-item-container-${productId}`);
             //container.remove();//intead of using below code 
             orderSummary();
-            pageUpdateCartQuantity();
-            renderPaymentSummary();
+            checkoutHeader.pageUpdateCartQuantity();
+            paymentSummary.renderPaymentSummary();
         });
     });
 
@@ -181,9 +180,9 @@ export function orderSummary()
             // console.log(newQuantity);
               cart.updateCartQuantity(newQuantity,productId);//UPDATE CART QUANTITY IN cart.js
 
-              pageUpdateCartQuantity();//UPDATE CHECKOUT PAGE IN Checkout(Cartitem)
+              checkoutHeader.pageUpdateCartQuantity();//UPDATE CHECKOUT PAGE IN Checkout(Cartitem)
 
-              renderPaymentSummary();//update payment page
+              paymentSummary.renderPaymentSummary();//update payment page
 
               orderSummary();//UPDATE OF ORDER SUMMARY UPDATE CART ITEM LIST COUNT
           });
@@ -197,7 +196,7 @@ export function orderSummary()
             cart.UpdateDeliveryOption(productId,deliveryOptionId);//UPDATE DELIVERY OPTION IN cart.js
             orderSummary();//REFRESH UPDATE 
 
-            renderPaymentSummary();
+            paymentSummary.renderPaymentSummary();
         });
     });
 
