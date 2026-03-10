@@ -31,25 +31,50 @@ Pending ⏳ – still working
 Resolved (Fulfilled) ✅ – task completed successfully
 
 Rejected ❌ – task failed*/
-new Promise((resolve)=>{
-  console.log('Start promises');
+
+
+/*new Promise((resolve)=>{
+  //console.log('Start promises');
   loadProducts(()=>{
     //console.log('Finished loading')
-    resolve();
+    resolve("value1");
   });
-}).then(()=>{
-  //console.log('next step');
+
+}).then((value)=>{
+  console.log(value);
   return new Promise((resolve)=>{
     loadCart(()=>{
       resolve();
     });
   });
+
 }).then(()=>{
   renderCheckoutHeader();
   orderSummary();
   renderPaymentSummary();
 });
+*/
+//now run all promies at same time
+Promise.all([
+  new Promise((resolve)=>{
+    //console.log('Start promises');
+    loadProducts(()=>{
+      //console.log('Finished loading')
+      resolve("value1");
+    })
+  }),
+  new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve();
+    });
+  })
 
+]).then((values)=>{
+  console.log(values);//(2) ['value1', undefined] because one resolve retrun values
+  renderCheckoutHeader();
+  orderSummary();
+  renderPaymentSummary();
+});
 
 /*
 //this is callback(more function calling inide nesting mean loading more time )
