@@ -2,17 +2,21 @@ import { orderSummary } from "../../Scripts/checkout/orderSummary.js";
 import { loadFromStorage ,cart} from "../../data/cart-class.js";
 import * as checkoutHeader from "../../Scripts/checkout/checkoutHeader.js";
 import * as paymentSummary from "../../Scripts/checkout/paymentSummary.js";
-import { loadProducts } from "../../data/products.js";
+import { loadProducts,loadProductsFetch } from "../../data/products.js";
 import { products } from "../../data/products.js";
 describe('test suite: renderOrderSummary',()=>{
   let productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
   let productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
   beforeAll((done)=>{
-      loadProducts(()=>{
-        /*productId1 = products[0].id;
+      /*loadProducts(()=>{
+        productId1 = products[0].id;
         productId2 = products[1].id;
         console.log('productId1:', productId1);
-        console.log('productId2:', productId2);*/
+        console.log('productId2:', productId2);
+        done();
+      });*/
+      loadProductsFetch().then(()=>{
+        
         done();
       });
     });

@@ -4,7 +4,7 @@ import { orderSummary } from "./checkout/orderSummary.js";
 
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 
-import { loadProducts} from "../data/products.js";
+import { loadProducts,loadProductsFetch} from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js';
 //import '../data/car.js';
@@ -56,13 +56,7 @@ Rejected ❌ – task failed*/
 */
 //now run all promies at same time
 Promise.all([
-  new Promise((resolve)=>{
-    //console.log('Start promises');
-    loadProducts(()=>{
-      //console.log('Finished loading')
-      resolve("value1");
-    })
-  }),
+  loadProductsFetch(),
   new Promise((resolve)=>{
     loadCart(()=>{
       resolve();
