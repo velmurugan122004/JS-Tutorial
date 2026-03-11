@@ -73,19 +73,28 @@ Promise.all([
 
 //this is below code is shortcut for the above code line-58 to line-71
 async function loadPage(){
-  //console.log('load page');
-  /*loadProductsFetch().then(()=>[
-  ]);*///intead of using below code
+  try{
+    //throw "error";
 
-  await loadProductsFetch();//only used async function 
+    //console.log('load page');
+    /*loadProductsFetch().then(()=>[
+    ]);*///intead of using below code
 
-  const values=await new Promise((resolve)=>{
-    loadCart(()=>{
-      resolve('value3');
-    });
-  })/*.then((values)=>{
-    instead of using await so const value=await new Promise((resolve)=>{ this ;ine store value
-  });*/
+    await loadProductsFetch();//only used async function 
+
+    const values=await new Promise((resolve,reject)=>{
+      //throw "error2"; first way to create error manually in promies
+      loadCart(()=>{
+        //reject('error3');econd way to create error
+        resolve('value3');
+      });
+    });/*.then((values)=>{
+      instead of using await so const value=await new Promise((resolve)=>{ this ;ine store value
+    });*/
+  }
+  catch(error){
+    console.log("Unexpected error. please try again later ...");
+  }
 
   renderCheckoutHeader();
   orderSummary();
