@@ -55,6 +55,7 @@ Rejected ❌ – task failed*/
 });
 */
 //now run all promies at same time
+/*
 Promise.all([
   loadProductsFetch(),
   new Promise((resolve)=>{
@@ -68,8 +69,30 @@ Promise.all([
   renderCheckoutHeader();
   orderSummary();
   renderPaymentSummary();
-});
+});*/
 
+//this is below code is shortcut for the above code line-58 to line-71
+async function loadPage(){
+  //console.log('load page');
+  /*loadProductsFetch().then(()=>[
+  ]);*///intead of using below code
+
+  await loadProductsFetch();//only used async function 
+
+  const values=await new Promise((resolve)=>{
+    loadCart(()=>{
+      resolve('value3');
+    });
+  })/*.then((values)=>{
+    instead of using await so const value=await new Promise((resolve)=>{ this ;ine store value
+  });*/
+
+  renderCheckoutHeader();
+  orderSummary();
+  renderPaymentSummary();
+  //return 'value2';
+}
+loadPage();
 /*
 //this is callback(more function calling inide nesting mean loading more time )
 that yyy above Promise is used
