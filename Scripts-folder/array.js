@@ -119,5 +119,38 @@ console.log(array);
 let array1=[...array,6,7];//before added array
 console.log(array1);
 
-let array2=[-2,-1,...array];//before added array
+let array2=[-2,-1,...array1];//before added array
+console.log(array2);
+
+//Array deletion
+console.log("Array deletion")
+//method 1:-(pop)delete at end
+/*Synatx
+  arrayName.pop(value)
+*/
+array2.pop();
+console.log(array2);
+
+//method 2:-(shift)delete at begin
+array2.shift();
+console.log(array2);
+
+//method 3:-(splice)specific index
+/*Synatx
+  arrayName.splice(index, count);
+*/
+array2.splice(2,2);//point 2 index remove two value
+console.log(array2);
+
+//method 4:-(delete)Remove using delete keyword
+delete array2[2];
+console.log(array2);//output [ -1, 0, <1 empty item>, 3, 4, 5, 6 ]
+
+
+//method 5:-(splice) Remove multiple elements from index
+/*Syntax
+arrayName.splice(startIndex, deleteCount);
+*/
+
+array2.splice(0,5);
 console.log(array2);
