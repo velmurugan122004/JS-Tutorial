@@ -1,10 +1,9 @@
 // Without array — messy
 let item1 = "Dosa";
 let item2 = "Idli";
-let item3 = "Vada";
+let item3 = "Vada";//it can be not clear that yy array used
 
 //Creation of array:-
-// With array — clean
 
 //Method:1-Array Literal (most common)
 /*Syntax
@@ -70,3 +69,55 @@ console.log(arr2);
 //method 6:-(Mixed all type)
 let mixed = [42, "hello", true, null, {name:"Vel"}, [1,2]];
 console.log(mixed);
+
+//Array Insertion:-
+console.log("Array Insertion");
+let array=[];
+//method 1:-(normal insertion with index)
+/*Synatx
+  arrayName[index]=value;
+*/
+console.log(array);
+array[0]=1;
+array[1]=2;
+console.log(array);
+
+//method 2:-(push)insert at last
+/*Synatx
+  arrayName.push(value);insert one value
+  arrayName.push(value1,value2)
+*/
+array.push(3);
+console.log(array);
+
+//method 3:-(unshift)insert at end
+/*Synatx
+  arrayName.unshift(value);
+*/
+array.unshift(0);
+console.log(array);
+
+//method 4;-(splice)insert at user position
+/*Synatx
+  array.splice(index, deleteCount, element)
+*/
+array.splice(3,0,2.5);
+console.log(array);
+
+//method 5:-(multiple value)
+/*Synatx
+  arrayName.push(value1,value2)insert multiple value
+*/
+array.push(4,5);
+console.log(array);
+
+//method 6:-(Insert using spread operator (new array))
+/*Synatx
+  keyword arrayName=[...oldArray,value]
+  keyword arrayName=[value,...newArray]
+*/
+let array1=[...array,6,7];//before added array
+console.log(array1);
+
+let array2=[-2,-1,...array];//before added array
+console.log(array2);
