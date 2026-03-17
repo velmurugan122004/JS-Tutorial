@@ -154,3 +154,13 @@ arrayName.splice(startIndex, deleteCount);
 
 array2.splice(0,5);
 console.log(array2);
+
+//Array Slicing:-
+console.log("Array Slicing");
+/*Syntax
+  arrayName.slice(startIndex);
+
+  arrayName.slice(startIndex, endIndex);
+*/
+let array3=array2.slice(0,1);
+console.log(array3);//only 5 print
