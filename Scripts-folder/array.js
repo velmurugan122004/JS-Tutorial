@@ -280,3 +280,118 @@ let arr11 = [1,2,3,4,5];
 arr11.copyWithin(0,3);
 
 console.log(arr11);//4,5,3,4,5
+
+//Array Iteration
+console.log("Array Iteration ");
+//method 1:-(forEach)
+/*Syntax
+  arrayName.forEach((value, index, array) => {});
+*/
+
+arr11.forEach((x,ind)=>{
+  console.log(`Index ${ind}:-${x}`);
+})
+
+//method 2:-(map)Creates new array by transforming values
+/*Syntax
+  arrayName.map((value, index, array) => {
+    return newValue;
+  });
+*/
+let res=arr11.map(x=>x*2);
+console.log(res);
+
+//calculate tax
+let total=res.map((p)=>
+  p+p*0.18
+);
+console.log(total);
+
+//method 3:-(filter)Returns elements that match condition
+/*Syntax
+  arrayName.filter((value) => condition);
+  });
+*/
+let res1=total.filter(x=>x<10);
+console.log(res1);
+let users = [
+ {active:true},
+ {active:false}
+];
+
+let activeUsers = users.filter(u => u.active);
+console.log(users);
+console.log(activeUsers);
+
+//method 4:-(reduce)Reduces array → single value
+/*Syntax
+  arrayName.reduce((accumulator, currentValue, index, array) => {
+    return updatedAccumulator;
+}, initialValue);
+*/
+let arr12 = [1,2,3];
+
+let sum = arr12.reduce((acc, curr) => acc + curr, 0);
+
+console.log(sum);
+//convert array-object
+let arr13 = ["a","b","a","c","a"];
+
+let count = arr13.reduce((acc, val) => {
+    acc[val] = (acc[val] || 0) + 1;
+    return acc;
+}, {});
+
+console.log(count);
+// {a:3, b:1, c:1}
+
+//method 5:-(some)Checks if ANY one element satisfies condition
+/*Syntax
+  arrayName.some(value => condition);
+*/
+arr = [1,2,3];
+
+console.log(arr.some(x => x > 2));//true
+
+//method 6:-(every)
+/*Syntax
+  arrayName.every(value => condition);
+*/
+arr = [2,5,6];
+
+console.log(arr.every(x => x % 2 === 0));//it check all if one is false fully false
+
+//Destructing
+
+let [first, second, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(first);  // 10
+console.log(second); // 20
+console.log(rest);   // [30, 40, 50]
+
+// Skip elements
+let [a, , b] = [1, 2, 3];
+console.log(a, b); // 1 3
+
+// Swap variables
+let x = 5, y = 10;
+[x, y] = [y, x];
+console.log(x, y); // 10 5
+
+//spread ;-Expands (spreads) elements
+a = [1,2];
+b = [3,4];
+
+result = [...a, ...b];//spread
+
+console.log(result);
+
+//Rest:-Collects multiple values into one
+/*Syntax
+  function fn(...args){}
+*/
+function sum(...nums){
+  return nums.reduce((a,b)=>a+b,0);
+}
+
+console.log(sum(1,2,3,4));
