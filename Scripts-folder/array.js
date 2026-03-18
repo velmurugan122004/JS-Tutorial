@@ -155,7 +155,7 @@ arrayName.splice(startIndex, deleteCount);
 array2.splice(0,5);
 console.log(array2);
 
-//Array Slicing:-
+//Array Slicing/Copying:-
 console.log("Array Slicing");
 /*Syntax
   arrayName.slice(startIndex);
@@ -164,3 +164,119 @@ console.log("Array Slicing");
 */
 let array3=array2.slice(0,1);
 console.log(array3);//only 5 print
+
+//Array Length
+console.log("Array Length");
+/*Syntax
+  arrayName.length;
+*/
+
+let arr3=[1,2,3,4,5];
+console.log(arr3.length);
+
+//convert anything to array
+//method 1:-(Array.from)line-56 check
+//method 2:-(Array.of)line-44 check
+//method 3:-(toString)convert array to string
+let arr4 = [10,20,30];
+
+let result = arr4.toString();
+
+console.log(result);//"10,20,30"
+
+//Array Searching
+console.log("Searching")
+//method 1:-(indexOf)
+/*Syntax
+  arrayName.indexOf(value);
+*/
+let arr5 = [10,20,30,20];
+
+console.log(arr5.indexOf(20));
+
+//method 2:-(lastIndexOf)
+/*Syntax
+  arrayName.lastIndexOf(value);
+*/
+console.log(arr5.lastIndexOf(20));
+
+//method 3:-(includes)check value in array
+/*Syntax
+  arrayName.includes(value);
+*/
+console.log(arr5.includes(20));
+
+//method 4:-(find)Returns first element that matches condition
+/*Syntax
+  arrayName.find(callback);
+*/
+let arr6 = [10,20,30,40];
+let result1 = arr6.find(x => x > 20);
+console.log(result1);
+
+
+//method 5:-(findIndex)Returns first element of index that matches condition
+/*Syntax
+  arrayName.findIndex(callback);
+*/
+let result2 = arr6.findIndex(x => x > 20);
+console.log(result2);
+
+//Array Transform /modify
+console.log("Array Modify");
+
+//method 1:-(Sort)
+/*Syntax
+  arrayName.sort();
+*/
+let arr7 = [5,2,8,1];
+arr7.sort();
+console.log(arr7);
+
+//method 2:-(reverse)
+/*Syntax
+  arrayName.reverse();
+*/
+arr7.reverse();
+console.log(arr7);
+
+//method 3:-(concant)
+/*Syntax
+  arrayName.concat();
+*/
+let arr8=[6,8,9];
+let result3=arr7.concat(arr8);
+console.log(result3);
+
+//method 4:-(join)
+/*Syntax
+  arrayName.join(separator);
+*/
+console.log(result3.join("-"));
+
+//method 5:-(flat)convert to ingle array
+/*Syntax
+  arrayName.flat(depth);Flattens nested arrays.
+*/
+let arr9 = [1,2,[3,4]];
+
+console.log(arr9.flat());
+
+//method 6:-(fill)filling with value
+/*Syntax
+  arrayName.fill(value);Fill value
+*/
+let arr10 = new Array(5).fill(0);
+
+console.log(arr10);
+
+//method 7:-(copyWithin)Copies part of array inside same array
+/*Syntax
+  arrayName.copyWithin(target, start, end);
+*/
+
+let arr11 = [1,2,3,4,5];
+
+arr11.copyWithin(0,3);
+
+console.log(arr11);//4,5,3,4,5
