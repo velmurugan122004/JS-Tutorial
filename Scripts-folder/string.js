@@ -178,3 +178,23 @@ console.log(str); // Vada Dosa Idli
 let result = str.replaceAll("Idli", "Vada");
 
 console.log(result); // Vada Dosa Vada
+
+//Case Conversion
+console.log("Case Conversion")
+//method 1:-(uppercase)
+/*Syntax
+  string.toUpperCase()
+*/
+let userInput = "vel murugan";
+userInput= userInput.toUpperCase();
+console.log(userInput); // VEL MURUGAN
+
+//method 1:-(lowercase)
+/*Syntax
+  string.toLowerCase()
+*/
+email = "USER@GMAIL.COM";
+
+let cleanEmail = email.toLowerCase();
+
+console.log(cleanEmail); // user@gmail.com
