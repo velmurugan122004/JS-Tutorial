@@ -198,3 +198,26 @@ email = "USER@GMAIL.COM";
 let cleanEmail = email.toLowerCase();
 
 console.log(cleanEmail); // user@gmail.com
+
+//Trim Methods
+console.log("Trim Methods");
+//method 1:-(trim)//Removes spaces from both start and end
+/*Syntax
+  string.trim()
+*/
+str = "   Chennai   ";
+console.log(str.trim()); // "Chennai"
+
+//method 2:-(trimStart)//Removes spaces from start only
+/*Syntax
+  string.trimStart()
+*/
+str = "   Idli Dosa";
+console.log(str.trimStart()); // "Idli Dosa"
+
+//method 2:-(trimEnd)//Removes spaces from end only
+/*Syntax
+  string.trimEnd()
+*/
+str = "Idli Dosa  ";
+console.log(str.trimEnd()); // "Idli Dosa"
