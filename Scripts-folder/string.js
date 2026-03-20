@@ -62,9 +62,12 @@ console.log(name[name.length - 1]); // "n"
 console.log(name.at(-1));           // "n" (modern)
 console.log(name.at(-2));  
 
-//String Slicing
-console.log("String Slicing");
+//Extract Method
+//method 1:-(String Slicing)
 //orginal not changed
+/*Synatx
+  string.slice(startIndex, endIndex)
+*/
 str = "Vel Murugan";
 
 // slice(start, end) — end NOT included
@@ -73,8 +76,10 @@ console.log(str.slice(4));      // "Murugan"
 console.log(str.slice(-7));     // "Murugan"
 console.log(str.slice(-7, -4)); // "Mur"
 
-//Sub String
-console.log("Sub String");
+//method 2:-(subString)
+/*Syntax
+  string.substring(startIndex, endIndex)
+*/
 str = "Chennai";
 
 console.log(str.substring(0, 4)); // "Chen"
@@ -83,6 +88,14 @@ console.log(str.substring(4));    // "nai"
 // Difference from slice — no negative index support
 console.log(str.substring(-3));   // "Chennai" (treats -3 as 0)
 console.log(str.slice(-3));       // "nai" ✅
+
+//method 3:-(substr)
+/*Syntax
+  string.substr(startIndex, length)
+*/str = "Chennai";
+
+console.log(str.substr(0, 3)); // Che
+
 
 //Searching
 console.log("Searching");
@@ -221,3 +234,43 @@ console.log(str.trimStart()); // "Idli Dosa"
 */
 str = "Idli Dosa  ";
 console.log(str.trimEnd()); // "Idli Dosa"
+
+//String combine
+ console.log("String combine");
+//method 1:-(concat)
+ /*Syntax
+  string1.concat(string2, string3, ...)
+*/
+let str1 = "Idli";
+let str2 = "Dosa";
+
+let result1 = str1.concat(" ", str2);
+
+console.log(result1); // Idli Dosa
+
+//method 2:-(operator);
+str = "Hello" + " " + "World";
+
+console.log(str); // Hello World
+//method 3:-(Template Literals)
+/*Synatx
+  `text ${variable}`
+*/
+name = "Vel";
+
+msg = `Hello ${name}`;
+
+console.log(msg); // Hello Vel
+
+//String repeat
+/*Syntax
+  string.repeat(count)
+*/
+str = "Hi ";
+
+console.log(str.repeat(3)); // Hi Hi Hi 
+//pattern
+let n = 5;
+for (let i = 1; i <= n; i++) {
+    console.log("* ".repeat(n));
+}
