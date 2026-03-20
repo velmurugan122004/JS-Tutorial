@@ -274,3 +274,53 @@ let n = 5;
 for (let i = 1; i <= n; i++) {
     console.log("* ".repeat(n));
 }
+
+//String split and convert
+//method 1:-(split)
+/*Syntax
+  string.split(separator, limit)
+*/
+str = "Idli Dosa Pongal";
+result = str.split(" ");
+console.log(result); // ["Idli", "Dosa", "Pongal"]
+
+//method 2:-(join)(Reverse of split)
+/*Syntax
+  array.join(separator)Converts array → string
+*/
+let arr = ["Idli", "Dosa", "Vada"];
+str = arr.join(" ");
+
+console.log(str); // Idli Dosa Vada
+
+//method 3:-(toString)
+/*Syntax
+  value.toString()Converts number/array → string
+*/
+let num = 100;
+
+str = num.toString();
+
+console.log(str); // "100"
+
+//method 4:-(String)type conversion
+/*Syntax
+  String(value)
+*/
+num = 200;
+//convert number to tring
+str = String(num);
+
+console.log(str); // "200"
+
+//method 5:-(Number)
+//convert string to number
+num = Number(str);
+
+console.log(num); // 100
+
+//method 6:-(parseInt)
+str = "123px";
+
+console.log(parseInt(str));   // 123
+console.log(parseFloat("10.5")); // 10.5
