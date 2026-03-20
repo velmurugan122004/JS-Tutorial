@@ -324,3 +324,30 @@ str = "123px";
 
 console.log(parseInt(str));   // 123
 console.log(parseFloat("10.5")); // 10.5
+
+//Modern Technology
+//method 1:-(at)
+/*Synatx
+  string.at(index)
+*/
+str = "Chennai";
+
+console.log(str.at(0));   // C
+console.log(str.at(-1));  // i (last character)
+console.log(str.at(-2));  // a
+
+//method 2:-(padStart)
+/*Synatx
+  string.padStart(targetLength, padString)
+*/
+num = "5";
+
+console.log(num.padStart(3, "0")); // "005"
+
+//method 3:-(padEnd)
+/*Synatx
+  string.padEnd(targetLength, padString)
+*/
+num = "5";
+
+console.log(num.padEnd(3, "0")); // "500"
