@@ -2,6 +2,8 @@ import { cart } from "../../data/cart-class.js";
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOption.js";
 import{formatCurrency} from "../utills/money.js";
+import { addOrder } from "../../data/orders.js";
+
 //payment summary 
 //REVIEW YOUR ORDER LIST
 export function renderPaymentSummary(){
@@ -57,19 +59,35 @@ export function renderPaymentSummary(){
             <div>Order total:</div>
             <div class="payment-summary-money">$${formatCurrency(totalPriceAfterTax)}</div>
           </div>
-
-          <a href="orders.html">
-              <button class="place-order-button button-primary js-payment-order-placed">
+          <button class="place-order-button button-primary js-payment-order-placed">
                 Place your order
-              </button>
-          </a>
+          </button>
         </div>
         `;
         document.querySelector('.js-payment-summary').innerHTML=paymentSummary;
 
-        /*const orderPlaced=document.querySelector('.js-payment-order-placed');
+        const orderPlaced=document.querySelector('.js-payment-order-placed');
 
-    orderPlaced.addEventListener('click',()=>{
-        window.location.href = 'orders.html';
-    }); instead of using above code  (line-61)*/
+    orderPlaced.addEventListener('click',async()=>{
+
+      try{
+          const response=await fetch('https://supersimplebackend.dev/orders',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            cart:cart
+          })
+        });
+        const order=await response.json();
+        //console.log(order);
+        addOrder(order);
+      }
+      catch(error){
+        console.log('Unexpected error . Try again later');
+      }
+      window.location.href='orders.html';
+        
+    });
 }
