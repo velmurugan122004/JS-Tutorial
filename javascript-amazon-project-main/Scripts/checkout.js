@@ -5,7 +5,7 @@ import { orderSummary } from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 
 import { loadProducts,loadProductsFetch} from "../data/products.js";
-import { loadCart } from "../data/cart.js";
+import { loadCart ,loadCartFetch} from "../data/cart.js";
 //import '../data/cart-class.js';
 //import '../data/car.js';
 //import '../data/backend-practice.js';
@@ -81,8 +81,9 @@ async function loadPage(){
     ]);*///intead of using below code
 
     await loadProductsFetch();//only used async function 
+    await loadCartFetch();
 
-    const values=await new Promise((resolve,reject)=>{
+    /*const values=await new Promise((resolve,reject)=>{
       //throw "error2"; first way to create error manually in promies
       loadCart(()=>{
         //reject('error3');econd way to create error
