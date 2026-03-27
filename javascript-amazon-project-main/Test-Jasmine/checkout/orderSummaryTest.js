@@ -7,19 +7,24 @@ import { products } from "../../data/products.js";
 describe('test suite: renderOrderSummary',()=>{
   let productId1='e43638ce-6aa0-4b85-b27f-e1d07eb678c6';
   let productId2='15b6fc6f-327a-4ec4-896f-486349e85a3d';
-  beforeAll((done)=>{
+  /*beforeAll((done)=>{
       /*loadProducts(()=>{
         productId1 = products[0].id;
         productId2 = products[1].id;
         console.log('productId1:', productId1);
         console.log('productId2:', productId2);
         done();
-      });*/
+      });
       loadProductsFetch().then(()=>{
         
         done();
       });
-    });
+  });*/
+  //instead of above code using this below
+
+  beforeAll(async()=>{
+    await loadProductsFetch();
+  });
     //spyOn(document, 'querySelector').and.callThrough();
     beforeEach(()=>{
       spyOn(localStorage,'setItem');

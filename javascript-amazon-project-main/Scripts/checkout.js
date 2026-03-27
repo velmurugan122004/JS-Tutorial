@@ -80,8 +80,10 @@ async function loadPage(){
     /*loadProductsFetch().then(()=>[
     ]);*///intead of using below code
 
-    await loadProductsFetch();//only used async function 
-    await loadCartFetch();
+    await Promise.all([
+      loadProductsFetch(),//only used async function 
+      loadCartFetch()
+    ])
 
     /*const values=await new Promise((resolve,reject)=>{
       //throw "error2"; first way to create error manually in promies
