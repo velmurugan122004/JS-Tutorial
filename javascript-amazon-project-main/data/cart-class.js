@@ -9,9 +9,9 @@ class Cart{
   }
 
   #loadFromStorage(){//private method
-    this.cartItems =JSON.parse(localStorage.getItem(this.#localStorageKey));
-
-    if(!this.cartItems){
+    this.cartItems =JSON.parse(localStorage.getItem(this.#localStorageKey))||[];
+    //default value 
+    /*if(!this.cartItems){
       this.cartItems=[{
         productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
         quantity:2,
@@ -22,7 +22,7 @@ class Cart{
         deliveryOptionId:'2'
       }];
       //this.cartItems=[];
-    }
+    }*/
   };
 
   saveStorage()
@@ -108,6 +108,9 @@ class Cart{
           }
       });
       this.saveStorage();
+  }
+  clearCart(){
+    localStorage.removeItem('cart-oop');
   }
 }
 
