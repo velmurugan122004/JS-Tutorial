@@ -20,7 +20,38 @@ function renderProductsGrid(){
     //intead thi below line used of using function pageUpdateCartQuantity();
     //document.querySelector('.js-cart-quantity').innerHTML=calculateCartQuantity();  instead using amazon.html 48 inside data  
 
-    products.forEach((product)=>{
+    //active search button filter earch baed product
+
+    
+
+    const url=new URL(window.location.href);
+
+    const search=url.searchParams.get('search');
+    
+    const searchInput = document.querySelector('.js-search-data');
+    // ✅ Show search text in input
+    if (search) {
+      searchInput.value = search;
+    }
+    let filteredProducts=products;//get products all if not earch means all product details display
+    // If a search exists in the URL parameters,
+    // filter the products that match the search
+    if (search) {
+        const tempProducts = products.filter((product) => {
+          let matchingKeyword=false;
+          product.keywords.forEach((keyword)=>{
+            if(keyword.toLowerCase().includes(search.toLocaleLowerCase())){
+              matchingKeyword=true;
+            }
+          });
+          return matchingKeyword||product.name.toLowerCase().includes(search.toLowerCase());
+        });
+
+        // ✅ If no match → show all products
+        filteredProducts = tempProducts.length === 0 ? products : tempProducts;
+    }
+    //console.log(filteredProducts);
+    filteredProducts.forEach((product)=>{
         productsHTML+=`
             <div class="product-container">
               <div class="product-image-container">
@@ -148,6 +179,28 @@ function renderProductsGrid(){
           // so we can stop it later if we need to.
           addedMessageTimeoutId= timeoutId;
           });
+    });
+    function doSearch() {
+      const value = searchInput.value.trim();
+
+      if (value === '') {
+        window.location.href = 'amazon.html';
+      } else {
+        window.location.href = `amazon.html?search=${value}`;
+      }
+    }
+    document.querySelector('.js-search').addEventListener('click', doSearch);
+    // ✅ BACKSPACE / CLEAR INPUT → show all products
+    searchInput.addEventListener('input', (event) => {
+      if (event.target.value.trim() === '') {
+        window.location.href = 'amazon.html';
+      }
+    });
+    
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        doSearch();
+      }
     });
     pageUpdateCartQuantity();
 }

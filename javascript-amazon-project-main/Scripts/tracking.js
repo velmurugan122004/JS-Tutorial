@@ -7,10 +7,10 @@ async function loadPage(){
 
   document.querySelector('.js-track-order-cart').innerHTML=cart.calculateCartQuantity();
   const url = new URL(window.location.href);
-  console.log(url);
+  //console.log(url);
   const orderId = url.searchParams.get('orderId');
   const productId = url.searchParams.get('productId');
-  console.log(orderId);
+  //console.log(orderId);
   const order = getOrder(orderId);
   const product = getProduct(productId);
 
@@ -22,6 +22,22 @@ async function loadPage(){
       productDetails = details;
     }
   });
+  //calculate percentage of order progress
+  const today=dayjs();
+  const orderTime=dayjs(order.orderTime);
+  const deliveryTime=dayjs(productDetails.estimatedDeliveryTime);
+
+  const percentageProgress=((today-orderTime)/(deliveryTime-orderTime))*100;
+
+  /*console.log(today);
+  console.log(orderTime);
+  console.log(deliveryTime);
+  console.log(today-orderTime);
+  console.log(deliveryTime-orderTime);
+  console.log((today-orderTime)/(deliveryTime-orderTime));
+  console.log(percentageProgress);*/
+
+
   //console.log(productDetails);
   //console.log(productDetails.quantity);
   //console.log(dayjs(productDetails.estimateDeliveryTime).format('dddd, MMMM D'));
@@ -45,19 +61,21 @@ async function loadPage(){
         <img class="product-image" src="${product.image}">
 
         <div class="progress-labels-container">
-          <div class="progress-label">
+          <div class="progress-label ${percentageProgress<50?'current-status':''}">
             Preparing
           </div>
-          <div class="progress-label current-status">
+          <div class="progress-label ${(percentageProgress>=50 && percentageProgress<100)?'current-status':''}">
             Shipped
           </div>
-          <div class="progress-label">
+          <div class="progress-label${
+            percentageProgress>=100?'current-status':''
+          }">
             Delivered
           </div>
         </div>
 
         <div class="progress-bar-container">
-          <div class="progress-bar"></div>
+          <div class="progress-bar" style="width:${percentageProgress}%"></div>
         </div>`;
         document.querySelector('.js-track-order').innerHTML=trackingHTML;
 }
