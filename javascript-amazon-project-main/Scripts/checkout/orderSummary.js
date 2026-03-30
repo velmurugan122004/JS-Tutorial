@@ -199,7 +199,12 @@ export function orderSummary()
             paymentSummary.renderPaymentSummary();
         });
     });
-
+    document.addEventListener('keydown',(event)=>{
+      if(event.key==='Delete'){
+        console.log('Delete key pressed');
+        cart.clearCart();
+        location.reload();      }
+    });
     
     
 }

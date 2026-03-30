@@ -11,7 +11,7 @@ class Cart{
   #loadFromStorage(){//private method
     this.cartItems =JSON.parse(localStorage.getItem(this.#localStorageKey))||[];
     //default value 
-    /*if(!this.cartItems){
+    /*if(this.cartItems){
       this.cartItems=[{
         productId:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
         quantity:2,
@@ -110,7 +110,10 @@ class Cart{
       this.saveStorage();
   }
   clearCart(){
-    localStorage.removeItem('cart-oop');
+    this.cartItems = [];   
+    //localStorage.removeItem(this.#localStorageKey);
+    this.saveStorage();
+    console.log(this.cartItems);
   }
 }
 
