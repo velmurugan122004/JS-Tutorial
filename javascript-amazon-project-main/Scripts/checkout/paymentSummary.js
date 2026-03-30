@@ -69,7 +69,13 @@ export function renderPaymentSummary(){
         const orderPlaced=document.querySelector('.js-payment-order-placed');
 
     orderPlaced.addEventListener('click',async()=>{
-
+      if (cart.cartItems.length === 0) {
+        orderPlaced.disabled = true;
+        return;
+      }
+      else{
+        orderPlaced.disabled = false;
+      }
       try{
           const response=await fetch('https://supersimplebackend.dev/orders',{
           method:'POST',
@@ -82,8 +88,8 @@ export function renderPaymentSummary(){
         });
         const order=await response.json();
         //console.log(order);
-        addOrder(order);
-        cart.clearCart();
+          addOrder(order);
+          cart.clearCart();
       }
       catch(error){
         console.log('Unexpected error . Try again later');

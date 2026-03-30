@@ -113,7 +113,7 @@ class Cart{
     this.cartItems = [];   
     //localStorage.removeItem(this.#localStorageKey);
     this.saveStorage();
-    console.log(this.cartItems);
+    //console.log(this.cartItems);
   }
 }
 
