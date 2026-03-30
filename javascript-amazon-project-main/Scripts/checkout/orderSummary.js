@@ -202,8 +202,11 @@ export function orderSummary()
     document.addEventListener('keydown',(event)=>{
       if(event.key==='Delete'){
         console.log('Delete key pressed');
-        cart.clearCart();
-        location.reload();      }
+        const isConfirmed = confirm('⚠️ This will remove all items from your cart. Continue?');
+        if(isConfirmed){
+          cart.clearCart();
+          location.reload(); 
+        }     }
     });
     
     

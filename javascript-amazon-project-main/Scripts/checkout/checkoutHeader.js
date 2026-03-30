@@ -13,8 +13,9 @@ export function renderCheckoutHeader(){
           Checkout (<a class="return-to-home-link js-current-UpdateQuantity"
             href="amazon.html"></a>)
         </div>
-
+        
         <div class="checkout-header-right-section">
+        <button class="reset-btn js-reset-button">🔄</button>
           <img src="images/icons/checkout-lock-icon.png">
         </div>
       </div>`;
@@ -35,3 +36,15 @@ export function pageUpdateCartQuantity()//HEADER OF CHECKOUT CURRENT UPDATED CAR
       }
       
     }
+document.addEventListener('click', (event) => {
+  if (event.target.closest('.js-reset-button')) {
+    
+    const isConfirmed = confirm('Are you sure you want to clear the cart?');
+
+    if (isConfirmed) {
+      cart.clearCart();
+      location.reload(); // or renderCart();
+    }
+
+  }
+});

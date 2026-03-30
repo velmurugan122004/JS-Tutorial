@@ -92,12 +92,28 @@
 }
 
 .checkout-header-right-section {
-  text-align: right;
-  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px; /* space between reset & lock */
 }
 
-@media (max-width: 1000px) {
-  .checkout-header-right-section {
-    width: auto;
-  }
+.reset-btn {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.lock-icon {
+  height: 24px;
 }
